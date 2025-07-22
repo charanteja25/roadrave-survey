@@ -431,8 +431,43 @@
 </head>
 <body>
     <form id="researchForm">
+        <!-- Personal Info Section -->
+        <div class="section personal-info" data-section="0">
+            <div class="section-content">
+                <h2>👤 Personal Information</h2>
+                <div class="form-group">
+                    <label for="userName">Full Name</label>
+                    <input type="text" id="userName" name="userName" required class="other-input" placeholder="Your name" />
+                    <div class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <label for="userAge">Age</label>
+                    <input type="number" id="userAge" name="userAge" required class="other-input" min="10" max="120" placeholder="Your age" />
+                    <div class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <label for="userGender">Gender</label>
+                    <select id="userGender" name="userGender" required class="other-input">
+                        <option value="">Select...</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="non-binary">Non-binary</option>
+                        <option value="prefer-not-to-say">Prefer not to say</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <label for="userEmail">Email (optional, for updates)</label>
+                    <input type="email" id="userEmail" name="userEmail" class="other-input" placeholder="you@email.com" />
+                    <div class="error-message"></div>
+                </div>
+                <input type="hidden" id="uniqueId" name="uniqueId" />
+                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+            </div>
+        </div>
         <!-- Introduction Section -->
-        <div class="section intro" data-section="0">
+        <div class="section intro" data-section="1">
             <div class="section-content">
                 <div class="intro-logo">
                     <div class="logo">🎵 RoadRave</div>
@@ -444,7 +479,7 @@
             </div>
         </div>
         <!-- Demographics Section -->
-        <div class="section demographics hidden" data-section="1">
+        <div class="section demographics hidden" data-section="2">
             <div class="section-content">
                 <h2>👥 Demographics</h2>
                 <div class="form-group">
@@ -502,7 +537,7 @@
             </div>
         </div>
         <!-- Event Habits Section -->
-        <div class="section events hidden" data-section="2">
+        <div class="section events hidden" data-section="3">
             <div class="section-content">
                 <h2>🎪 Event Habits</h2>
                 <div class="form-group">
@@ -573,7 +608,7 @@
         </div>
 
         <!-- Challenges Section -->
-        <div class="section challenges hidden" data-section="3">
+        <div class="section challenges hidden" data-section="4">
             <div class="section-content">
                 <h2>😤 What Holds You Back?</h2>
                 <p class="subtitle">Help us understand the barriers you face</p>
@@ -656,7 +691,7 @@
         </div>
 
         <!-- Travel Section -->
-        <div class="section travel hidden" data-section="4">
+        <div class="section travel hidden" data-section="5">
             <div class="section-content">
                 <h2>🚗 How Do You Get There?</h2>
                 <p class="subtitle">Tell us about your event travel habits</p>
@@ -776,7 +811,7 @@
         </div>
 
         <!-- Features Section -->
-        <div class="section features hidden" data-section="5">
+        <div class="section features hidden" data-section="6">
             <div class="section-content">
                 <h2>✨ What Would You Love?</h2>
                 <p class="subtitle">Tell us which RoadRave features excite you most</p>
@@ -865,7 +900,7 @@
         </div>
 
         <!-- Safety Section -->
-        <div class="section safety hidden" data-section="6">
+        <div class="section safety hidden" data-section="7">
             <div class="section-content">
                 <h2>🛡️ Safety Matters</h2>
                 <p class="subtitle">How important are safety features to you?</p>
@@ -932,7 +967,7 @@
         </div>
 
         <!-- Pricing Section -->
-        <div class="section pricing hidden" data-section="7">
+        <div class="section pricing hidden" data-section="8">
             <div class="section-content">
                 <h2>💰 What's It Worth?</h2>
                 <p class="subtitle">Help us understand what you'd pay for premium features</p>
@@ -1000,7 +1035,7 @@
         </div>
 
         <!-- Feedback Section -->
-        <div class="section feedback hidden" data-section="8">
+        <div class="section feedback hidden" data-section="9">
             <div class="section-content">
                 <h2>💭 Your Thoughts</h2>
                 <p class="subtitle">Help us make RoadRave amazing with your ideas!</p>
@@ -1045,7 +1080,7 @@
             </div>
         </div>
         <!-- Thank You Section -->
-        <div class="section thank-you hidden" data-section="9">
+        <div class="section thank-you hidden" data-section="10">
             <div class="section-content">
                 <h2>🎉 Thank You!</h2>
                 <p>Your feedback is incredibly valuable and will help us build an amazing experience for event-goers like you!</p>
@@ -1057,14 +1092,36 @@
                 <p style="margin-top: 30px; color: #666; font-size: 0.9em;">
                     🎵 RoadRave - Making events social, safe, and affordable
                 </p>
+                <button type="button" class="btn btn-next" onclick="nextSection()">Continue</button>
+            </div>
+        </div>
+        <!-- Beta Invitation Section -->
+        <div class="section beta-invite hidden" data-section="11">
+            <div class="section-content">
+                <h2>🚀 Responses Saved!</h2>
+                <p>Would you like to join our exclusive beta program?</p>
+                <p><strong>Beta testers get free access to the beta version and a special offer: 6 months of premium for just £1/month!</strong></p>
+                <form id="betaForm">
+                    <div class="form-group">
+                        <label for="betaEmail">Your Email (for beta access):</label>
+                        <input type="email" id="betaEmail" name="betaEmail" required class="other-input" placeholder="you@email.com" />
+                    </div>
+                    <div class="form-group">
+                        <label><input type="checkbox" id="betaConsent" name="betaConsent" required /> I consent to be contacted about the RoadRave beta and offers.</label>
+                    </div>
+                    <button type="submit" class="btn btn-next">Join Beta</button>
+                </form>
+                <div id="betaSuccess" style="display:none;margin-top:20px;color:#fff;background:#43e97b;padding:16px;border-radius:10px;">Thank you! You’re on the beta list. We’ll be in touch soon!</div>
             </div>
         </div>
     </form>
     <script>
         let currentSection = 0;
-        const totalSections = 8;
+        const totalSections = 11;
         const formData = {};
+        // Generate unique ID on load
         document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('uniqueId').value = 'RR-' + Date.now() + '-' + Math.random().toString(36).substr(2, 6);
             document.querySelectorAll('.section').forEach(section => {
                 if (section.dataset.section !== '0') {
                     section.classList.add('hidden');
@@ -1170,6 +1227,12 @@
                     flatData[key] = formData[key];
                 }
             });
+            // Add uniqueId and personal info
+            flatData.uniqueId = document.getElementById('uniqueId').value;
+            flatData.userName = document.getElementById('userName').value;
+            flatData.userAge = document.getElementById('userAge').value;
+            flatData.userGender = document.getElementById('userGender').value;
+            flatData.userEmail = document.getElementById('userEmail').value;
             // CHANGE THIS ENDPOINT to your backend, SheetDB, Google Forms, etc.
             const endpoint = 'https://sheetdb.io/api/v1/5p4g8qrf3tr1c';
             try {
@@ -1187,6 +1250,26 @@
                 document.querySelector('.thank-you .section-content').innerHTML += '<div style="margin-top:20px;color:#fff;background:#ff4444;padding:16px;border-radius:10px;">There was a problem saving your responses. Please try again.</div>';
             }
             localStorage.removeItem('roadRaveFormData');
+        });
+        document.getElementById('betaForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('betaEmail').value;
+            const consent = document.getElementById('betaConsent').checked;
+            const uniqueId = document.getElementById('uniqueId').value;
+            if (!email || !consent) return;
+            // Send to SheetDB as well
+            try {
+                await fetch('https://sheetdb.io/api/v1/5p4g8qrf3tr1c', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ data: { uniqueId, betaEmail: email, betaConsent: consent ? 'yes' : 'no' } })
+                });
+                document.getElementById('betaForm').style.display = 'none';
+                document.getElementById('betaSuccess').style.display = 'block';
+            } catch (err) {
+                document.getElementById('betaSuccess').style.display = 'block';
+                document.getElementById('betaSuccess').innerText = 'There was a problem saving your beta signup. Please try again.';
+            }
         });
         function toggleOther(group) {
             // Show/hide the corresponding other-input field
