@@ -431,10 +431,22 @@
 </head>
 <body>
     <form id="researchForm">
-        <!-- Personal Info Section -->
-        <div class="section personal-info" data-section="0">
+        <!-- Introduction Section -->
+        <div class="section intro" data-section="1">
             <div class="section-content">
-                <h2>👤 Personal Information</h2>
+                <div class="intro-logo">
+                    <div class="logo">🎵 RoadRave</div>
+                </div>
+                <h1>Help Us Build the Future of Events!</h1>
+                <p class="subtitle">We're creating RoadRave - an app that connects event-goers, helps coordinate travel, and makes events safer and more social. Your feedback will help shape the future of how people experience concerts, festivals, and events.</p>
+                <p class="subtitle"><strong>This survey takes 3-4 minutes and your input is invaluable!</strong></p>
+                <button type="button" class="btn btn-next" onclick="nextSection()">Let's Get Started! 🚀</button>
+            </div>
+        </div>
+        <!-- Demographics Section -->
+        <div class="section demographics hidden" data-section="2">
+            <div class="section-content">
+                <h2>👥 Demographics & Personal Info</h2>
                 <div class="form-group">
                     <label for="userName">Full Name</label>
                     <input type="text" id="userName" name="userName" required class="other-input" placeholder="Your name" />
@@ -463,25 +475,6 @@
                     <div class="error-message"></div>
                 </div>
                 <input type="hidden" id="uniqueId" name="uniqueId" />
-                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
-            </div>
-        </div>
-        <!-- Introduction Section -->
-        <div class="section intro" data-section="1">
-            <div class="section-content">
-                <div class="intro-logo">
-                    <div class="logo">🎵 RoadRave</div>
-                </div>
-                <h1>Help Us Build the Future of Events!</h1>
-                <p class="subtitle">We're creating RoadRave - an app that connects event-goers, helps coordinate travel, and makes events safer and more social. Your feedback will help shape the future of how people experience concerts, festivals, and events.</p>
-                <p class="subtitle"><strong>This survey takes 3-4 minutes and your input is invaluable!</strong></p>
-                <button type="button" class="btn btn-next" onclick="nextSection()">Let's Get Started! 🚀</button>
-            </div>
-        </div>
-        <!-- Demographics Section -->
-        <div class="section demographics hidden" data-section="2">
-            <div class="section-content">
-                <h2>👥 Demographics</h2>
                 <div class="form-group">
                     <label>What is your age group?</label>
                     <div class="radio-group">
