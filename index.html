@@ -4,430 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RoadRave Market Research - Help Us Build the Future of Events</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        .error-message {
-            color: #ff4444;
-            font-size: 0.9em;
-            margin-top: 5px;
-            display: none;
-        }
-
-        .error-message.show {
-            display: block;
-        }
-
-        .form-group.error {
-            margin-bottom: 30px;
-        }
-
-        .form-group.error .radio-group,
-        .form-group.error .checkbox-group {
-            border: 2px solid #ff4444;
-            background: rgba(255, 68, 68, 0.05);
-        }
-
-        .form-group.error label {
-            color: #ff4444;
-        }
-
-        .nav-dot.locked {
-            background: rgba(102, 126, 234, 0.3);
-            cursor: not-allowed;
-        }
-
-        .nav-dot.locked::after {
-            content: '🔒';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 0.8em;
-        }
-
-        .progress-completed {
-            background: linear-gradient(90deg, #43e97b, #38f9d7);
-        }
-
-        .progress-incomplete {
-            background: linear-gradient(90deg, #ff6b6b, #ff8e53);
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .section {
-            min-height: 100vh;
-            padding: 60px 20px;
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
-            align-items: center;
-            position: relative;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 1;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .section-content {
-            position: relative;
-            z-index: 2;
-            width: 45vw;
-            max-width: 45vw;
-            min-width: 320px;
-            background: rgba(255, 255, 255, 0.4); /* Even more transparent */
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            animation: slideUp 0.8s ease-out;
-            margin-left: auto;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .intro {
-            background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80');
-        }
-
-        .demographics {
-            background-image: url('https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=1500&q=80'); /* group of diverse people portrait */
-        }
-
-        .events {
-            background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80'); /* vibrant concert/festival */
-        }
-
-        .challenges {
-            background-image: url('https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=1500&q=80'); /* maze */
-        }
-
-        .travel {
-            background-image: url('https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=1500&q=80'); /* car on road */
-        }
-
-        .features {
-            background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1500&q=80'); /* teamwork/app */
-        }
-
-        .safety {
-            background-image: url('https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=1500&q=80'); /* shield/safe */
-        }
-
-        .pricing {
-            background-image: url('https://images.unsplash.com/photo-1523289333742-be1143f6b766?auto=format&fit=crop&w=1500&q=80'); /* wallet/money */
-        }
-
-        .feedback {
-            background-image: url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1500&q=80'); /* writing/feedback */
-        }
-
-        .thank-you {
-            background: linear-gradient(45deg, #43e97b, #38f9d7);
-        }
-
-        h1 {
-            color: #333;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            text-align: center;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        h2 {
-            color: #444;
-            font-size: 2em;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .subtitle {
-            color: #666;
-            font-size: 1.2em;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        label {
-            display: block;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 8px;
-            font-size: 1.1em;
-        }
-
-        input[type="radio"], input[type="checkbox"] {
-            margin-right: 10px;
-            transform: scale(1.2);
-        }
-
-        .radio-group, .checkbox-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 10px;
-        }
-
-        .radio-option, .checkbox-option {
-            display: flex;
-            align-items: center;
-            padding: 12px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .radio-option:hover, .checkbox-option:hover {
-            background: #e9ecef;
-            transform: translateX(5px);
-        }
-
-        .radio-option input:checked + span, .checkbox-option input:checked + span {
-            font-weight: bold;
-            color: #667eea;
-        }
-
-        .radio-option:has(input:checked), .checkbox-option:has(input:checked) {
-            border-color: #667eea;
-            background: #f0f4ff;
-        }
-
-        textarea {
-            width: 100%;
-            min-height: 120px;
-            padding: 15px;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            font-size: 1em;
-            font-family: inherit;
-            resize: vertical;
-            transition: border-color 0.3s ease;
-        }
-
-        textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
-        .btn {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-next {
-            margin-top: 30px;
-            width: 100%;
-        }
-
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 4px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            z-index: 1000;
-            transition: width 0.3s ease;
-        }
-
-        .section-nav {
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 100;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .nav-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .nav-dot.active {
-            background: #667eea;
-            transform: scale(1.3);
-        }
-
-        .thank-you {
-            text-align: center;
-            background: linear-gradient(45deg, #43e97b, #38f9d7);
-        }
-
-        .thank-you h2 {
-            color: white;
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
-
-        .thank-you p {
-            color: white;
-            font-size: 1.3em;
-            margin-bottom: 30px;
-        }
-
-        @media (max-width: 768px) {
-            .section-content {
-                margin: 20px;
-                padding: 30px 20px;
-            }
-
-            h1 {
-                font-size: 2em;
-            }
-
-            h2 {
-                font-size: 1.5em;
-            }
-
-            .section-nav {
-                display: none;
-            }
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .intro-logo {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .logo {
-            font-size: 4em;
-            font-weight: bold;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
-        }
-        /* Remove section navigation and progress bar styles */
-        .section-nav, .progress-bar { display: none !important; }
-        .section { min-height: 100vh; padding: 60px 20px; background-size: cover; background-position: center; background-attachment: fixed; }
-        .section-content { box-shadow: 0 20px 40px rgba(0,0,0,0.3); background: rgba(255,255,255,0.95); }
-        .hidden { display: none !important; }
-        .other-input {
-            width: 100%;
-            min-height: 44px;
-            padding: 12px 16px;
-            border: 2px solid #667eea;
-            border-radius: 10px;
-            font-size: 1em;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            background: #f8f9fa;
-            transition: border-color 0.3s;
-        }
-        .other-input:focus {
-            border-color: #764ba2;
-            outline: none;
-            background: #f0f4ff;
-        }
-        .section.demographics {
-            background-image: url('https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=1500&q=80'); /* group of diverse people portrait */
-        }
-        .section.events {
-            background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80'); /* vibrant concert/festival */
-        }
-        .section.challenges {
-            background-image: url('https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=1500&q=80'); /* maze */
-        }
-        .section.travel {
-            background-image: url('https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=1500&q=80'); /* car on road */
-        }
-        .section.features {
-            background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1500&q=80'); /* teamwork/app */
-        }
-        .section.safety {
-            background-image: url('https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=1500&q=80'); /* shield/safe */
-        }
-        .section.pricing {
-            background-image: url('https://images.unsplash.com/photo-1523289333742-be1143f6b766?auto=format&fit=crop&w=1500&q=80'); /* wallet/money */
-        }
-        .section.feedback {
-            background-image: url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1500&q=80'); /* writing/feedback */
-        }
-        @media (max-width: 900px) {
-            .section {
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }
-            .section-content {
-                margin: 20px 0 0 0;
-                max-width: 100%;
-                width: 100%;
-                min-width: 0;
-                padding: 30px 20px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <form id="researchForm">
@@ -446,20 +23,11 @@
         <!-- Demographics Section -->
         <div class="section demographics hidden" data-section="2">
             <div class="section-content">
+                <button type="button" class="back-btn" onclick="prevSection()">← Back</button>
                 <h2>👥 Demographics & Personal Info</h2>
                 <div class="form-group">
-                    <label for="userName">Full Name</label>
-                    <input type="text" id="userName" name="userName" required class="other-input" placeholder="Your name" />
-                    <div class="error-message"></div>
-                </div>
-                <div class="form-group">
-                    <label for="userAge">Age</label>
-                    <input type="number" id="userAge" name="userAge" required class="other-input" min="10" max="120" placeholder="Your age" />
-                    <div class="error-message"></div>
-                </div>
-                <div class="form-group">
-                    <label for="userGender">Gender</label>
-                    <select id="userGender" name="userGender" required class="other-input">
+                    <label for="userGender">What is your gender?</label>
+                    <select id="userGender" name="userGender" required class="other-input" onchange="toggleGenderOther()">
                         <option value="">Select...</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
@@ -467,6 +35,78 @@
                         <option value="prefer-not-to-say">Prefer not to say</option>
                         <option value="other">Other</option>
                     </select>
+                    <input type="text" id="genderOther" name="genderOther" class="other-input hidden" placeholder="Please specify your gender" />
+                    <div class="error-message"></div>
+                    </div>
+                <div class="form-group">
+                    <label for="userAge">Age</label>
+                    <input type="number" id="userAge" name="userAge" required class="other-input" placeholder="Your age" />
+                    <div class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <label for="region">Which UK region do you live in?</label>
+                    <select id="region" name="region" required class="other-input" onchange="toggleRegionOther()">
+                        <option value="">Select...</option>
+                        <option value="London">London</option>
+                        <option value="South East">South East</option>
+                        <option value="North West">North West</option>
+                        <option value="Scotland">Scotland</option>
+                        <option value="Wales">Wales</option>
+                        <option value="Northern Ireland">Northern Ireland</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <input type="text" id="regionOther" name="regionOther" class="other-input hidden" placeholder="Please specify your region" />
+                    <div class="error-message"></div>
+                    </div>
+                <div class="form-group">
+                    <label for="occupation">What is your occupation?</label>
+                    <select id="occupation" name="occupation" required class="other-input" onchange="toggleOccupationFollowups()">
+                        <option value="">Select...</option>
+                        <option value="student">Student</option>
+                        <option value="young-professional">Young Professional</option>
+                        <option value="professional">Professional</option>
+                        <option value="freelancer">Freelancer/Self-employed</option>
+                        <option value="academia">Academia/Researcher</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <input type="text" id="occupationOther" name="occupationOther" class="other-input hidden" placeholder="Please specify your occupation" />
+                    <div id="studentFollowup" class="form-group hidden">
+                        <label>Do you attend university events or only public events?</label>
+                        <select name="studentEvents" class="other-input">
+                            <option value="">Select...</option>
+                            <option value="university">University events</option>
+                            <option value="public">Public events</option>
+                            <option value="both">Both</option>
+                        </select>
+                </div>
+                    <div id="youngProfessionalFollowup" class="form-group hidden">
+                        <label>Do you usually go with coworkers or friends?</label>
+                        <input type="text" name="youngProfessionalGroup" class="other-input" placeholder="Coworkers, friends, both, etc." />
+                    </div>
+                    <div id="freelancerFollowup" class="form-group hidden">
+                        <label>Do you prefer flexible, last-minute plans?</label>
+                        <select name="freelancerFlexible" class="other-input">
+                            <option value="">Select...</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div id="academiaFollowup" class="form-group hidden">
+                        <label>Do you attend academic conferences or research events?</label>
+                        <select name="academiaConferences" class="other-input">
+                            <option value="">Select...</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div id="professionalFollowup" class="form-group hidden">
+                        <label>Do you attend industry conferences or professional events?</label>
+                        <select name="professionalConferences" class="other-input">
+                            <option value="">Select...</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
                     <div class="error-message"></div>
                 </div>
                 <div class="form-group">
@@ -475,63 +115,13 @@
                     <div class="error-message"></div>
                 </div>
                 <input type="hidden" id="uniqueId" name="uniqueId" />
-                <div class="form-group">
-                    <label>What is your age group?</label>
-                    <div class="radio-group">
-                        <label class="radio-option"><input type="radio" name="age" value="18-24" required><span>18–24</span></label>
-                        <label class="radio-option"><input type="radio" name="age" value="25-34" required><span>25–34</span></label>
-                        <label class="radio-option"><input type="radio" name="age" value="35-44" required><span>35–44</span></label>
-                        <label class="radio-option"><input type="radio" name="age" value="45-54" required><span>45–54</span></label>
-                        <label class="radio-option"><input type="radio" name="age" value="55+" required><span>55+</span></label>
-                        <label class="radio-option"><input type="radio" name="age" value="other" required onchange="toggleOther('age')"><span>Other</span></label>
-                    </div>
-                    <input type="text" class="other-input hidden" name="ageOther" placeholder="Please specify" />
-                    <div class="error-message"></div>
-                </div>
-                <div class="form-group">
-                    <label>What is your occupation?</label>
-                    <div class="radio-group">
-                        <label class="radio-option"><input type="radio" name="occupation" value="student" required><span>Student</span></label>
-                        <label class="radio-option"><input type="radio" name="occupation" value="young-professional" required><span>Young Professional</span></label>
-                        <label class="radio-option"><input type="radio" name="occupation" value="professional" required><span>Professional</span></label>
-                        <label class="radio-option"><input type="radio" name="occupation" value="freelancer" required><span>Freelancer/Self-employed</span></label>
-                        <label class="radio-option"><input type="radio" name="occupation" value="other" required onchange="toggleOther('occupation')"><span>Other</span></label>
-                    </div>
-                    <input type="text" class="other-input hidden" name="occupationOther" placeholder="Please specify" />
-                    <div class="error-message"></div>
-                </div>
-                <div class="form-group">
-                    <label>Which UK region do you live in?</label>
-                    <div class="radio-group">
-                        <label class="radio-option"><input type="radio" name="region" value="London" required><span>London</span></label>
-                        <label class="radio-option"><input type="radio" name="region" value="South East" required><span>South East</span></label>
-                        <label class="radio-option"><input type="radio" name="region" value="North West" required><span>North West</span></label>
-                        <label class="radio-option"><input type="radio" name="region" value="Scotland" required><span>Scotland</span></label>
-                        <label class="radio-option"><input type="radio" name="region" value="Wales" required><span>Wales</span></label>
-                        <label class="radio-option"><input type="radio" name="region" value="Northern Ireland" required><span>Northern Ireland</span></label>
-                        <label class="radio-option"><input type="radio" name="region" value="other" required onchange="toggleOther('region')"><span>Other</span></label>
-                    </div>
-                    <input type="text" class="other-input hidden" name="regionOther" placeholder="Please specify" />
-                    <div class="error-message"></div>
-                </div>
-                <div class="form-group">
-                    <label>What is your gender?</label>
-                    <div class="radio-group">
-                        <label class="radio-option"><input type="radio" name="gender" value="male" required><span>Male</span></label>
-                        <label class="radio-option"><input type="radio" name="gender" value="female" required><span>Female</span></label>
-                        <label class="radio-option"><input type="radio" name="gender" value="non-binary" required><span>Non-binary</span></label>
-                        <label class="radio-option"><input type="radio" name="gender" value="prefer-not-to-say" required><span>Prefer not to say</span></label>
-                        <label class="radio-option"><input type="radio" name="gender" value="other" required onchange="toggleOther('gender')"><span>Other</span></label>
-                    </div>
-                    <input type="text" class="other-input hidden" name="genderOther" placeholder="Please specify" />
-                    <div class="error-message"></div>
-                </div>
                 <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
             </div>
         </div>
         <!-- Event Habits Section -->
         <div class="section events hidden" data-section="3">
             <div class="section-content">
+                <button type="button" class="back-btn" onclick="prevSection()">← Back</button>
                 <h2>🎪 Event Habits</h2>
                 <div class="form-group">
                     <label>How often do you attend events like concerts, festivals, or sports matches?</label>
@@ -566,13 +156,13 @@
                     <div class="error-message"></div>
                 </div>
                 <div class="form-group">
-                    <label>How do you usually find out about events?</label>
-                    <div class="radio-group">
-                        <label class="radio-option"><input type="radio" name="findEvents" value="social-media" required><span>Social media</span></label>
-                        <label class="radio-option"><input type="radio" name="findEvents" value="friends" required><span>Friends</span></label>
-                        <label class="radio-option"><input type="radio" name="findEvents" value="event-websites" required><span>Event websites</span></label>
-                        <label class="radio-option"><input type="radio" name="findEvents" value="ads" required><span>Ads</span></label>
-                        <label class="radio-option"><input type="radio" name="findEvents" value="other" required onchange="toggleOther('findEvents')"><span>Other</span></label>
+                    <label>How do you usually find out about events? (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option"><input type="checkbox" name="findEvents" value="social-media" onchange="toggleOther('findEvents')"><span>Social media</span></label>
+                        <label class="checkbox-option"><input type="checkbox" name="findEvents" value="friends" onchange="toggleOther('findEvents')"><span>Friends</span></label>
+                        <label class="checkbox-option"><input type="checkbox" name="findEvents" value="event-websites" onchange="toggleOther('findEvents')"><span>Event websites</span></label>
+                        <label class="checkbox-option"><input type="checkbox" name="findEvents" value="ads" onchange="toggleOther('findEvents')"><span>Ads</span></label>
+                        <label class="checkbox-option"><input type="checkbox" name="findEvents" value="other" onchange="toggleOther('findEvents')"><span>Other</span></label>
                     </div>
                     <input type="text" class="other-input hidden" name="findEventsOther" placeholder="Please specify" />
                     <div class="error-message"></div>
@@ -595,7 +185,6 @@
                     </div>
                     <div class="error-message"></div>
                 </div>
-                <button type="button" class="btn btn-back" onclick="prevSection()">Back</button>
                 <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
             </div>
         </div>
@@ -603,40 +192,46 @@
         <!-- Challenges Section -->
         <div class="section challenges hidden" data-section="4">
             <div class="section-content">
+                <button type="button" class="back-btn" onclick="prevSection()">← Back</button>
                 <h2>😤 What Holds You Back?</h2>
                 <p class="subtitle">Help us understand the barriers you face</p>
                 <div class="form-group">
                     <label>What prevents you from attending events as often as you'd like? (Select all that apply)</label>
                     <div class="checkbox-group">
                         <label class="checkbox-option">
-                            <input type="checkbox" name="barriers" value="cost">
+                            <input type="checkbox" name="barriers" value="cost" onchange="toggleOther('barriers')">
                             <span>💰 Too expensive (tickets, travel, accommodation)</span>
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="barriers" value="company">
+                            <input type="checkbox" name="barriers" value="company" onchange="toggleOther('barriers')">
                             <span>😕 No one to go with</span>
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="barriers" value="logistics">
+                            <input type="checkbox" name="barriers" value="logistics" onchange="toggleOther('barriers')">
                             <span>🚗 Travel/logistics are complicated</span>
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="barriers" value="safety">
+                            <input type="checkbox" name="barriers" value="safety" onchange="toggleOther('barriers')">
                             <span>🛡️ Safety concerns</span>
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="barriers" value="planning">
+                            <input type="checkbox" name="barriers" value="planning" onchange="toggleOther('barriers')">
                             <span>📅 Planning is overwhelming</span>
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="barriers" value="social">
+                            <input type="checkbox" name="barriers" value="social" onchange="toggleOther('barriers')">
                             <span>😰 Social anxiety/shyness</span>
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="barriers" value="none">
+                            <input type="checkbox" name="barriers" value="none" onchange="toggleOther('barriers')">
                             <span>✨ Nothing really holds me back!</span>
                         </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="barriers" value="other" onchange="toggleOther('barriers')">
+                            <span>🌟 Other</span>
+                        </label>
                     </div>
+                    <input type="text" class="other-input hidden" name="barriersOther" placeholder="Please specify" />
                     <div class="error-message"></div>
                 </div>
                 <div class="form-group">
@@ -678,7 +273,6 @@
                     <textarea name="missedEvent" placeholder="Tell us about a time you couldn't attend an event and why..."></textarea>
                     <div class="error-message"></div>
                 </div>
-                <button type="button" class="btn btn-back" onclick="prevSection()">Back</button>
                 <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
             </div>
         </div>
@@ -686,6 +280,7 @@
         <!-- Travel Section -->
         <div class="section travel hidden" data-section="5">
             <div class="section-content">
+                <button type="button" class="back-btn" onclick="prevSection()">← Back</button>
                 <h2>🚗 How Do You Get There?</h2>
                 <p class="subtitle">Tell us about your event travel habits</p>
                 <div class="form-group">
@@ -798,7 +393,6 @@
                     </div>
                     <div class="error-message"></div>
                 </div>
-                <button type="button" class="btn btn-back" onclick="prevSection()">Back</button>
                 <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
             </div>
         </div>
@@ -806,6 +400,7 @@
         <!-- Features Section -->
         <div class="section features hidden" data-section="6">
             <div class="section-content">
+                <button type="button" class="back-btn" onclick="prevSection()">← Back</button>
                 <h2>✨ What Would You Love?</h2>
                 <p class="subtitle">Tell us which RoadRave features excite you most</p>
                 <div class="form-group">
@@ -887,7 +482,6 @@
                     </div>
                     <div class="error-message"></div>
                 </div>
-                <button type="button" class="btn btn-back" onclick="prevSection()">Back</button>
                 <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
             </div>
         </div>
@@ -895,6 +489,7 @@
         <!-- Safety Section -->
         <div class="section safety hidden" data-section="7">
             <div class="section-content">
+                <button type="button" class="back-btn" onclick="prevSection()">← Back</button>
                 <h2>🛡️ Safety Matters</h2>
                 <p class="subtitle">How important are safety features to you?</p>
                 <div class="form-group">
@@ -954,7 +549,6 @@
                     <textarea name="safetyConcerns" placeholder="Share any worries, concerns, or ideas about safety features..."></textarea>
                     <div class="error-message"></div>
                 </div>
-                <button type="button" class="btn btn-back" onclick="prevSection()">Back</button>
                 <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
             </div>
         </div>
@@ -962,6 +556,7 @@
         <!-- Pricing Section -->
         <div class="section pricing hidden" data-section="8">
             <div class="section-content">
+                <button type="button" class="back-btn" onclick="prevSection()">← Back</button>
                 <h2>💰 What's It Worth?</h2>
                 <p class="subtitle">Help us understand what you'd pay for premium features</p>
                 <div class="form-group">
@@ -1022,7 +617,6 @@
                     </div>
                     <div class="error-message"></div>
                 </div>
-                <button type="button" class="btn btn-back" onclick="prevSection()">Back</button>
                 <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
             </div>
         </div>
@@ -1030,6 +624,7 @@
         <!-- Feedback Section -->
         <div class="section feedback hidden" data-section="9">
             <div class="section-content">
+                <button type="button" class="back-btn" onclick="prevSection()">← Back</button>
                 <h2>💭 Your Thoughts</h2>
                 <p class="subtitle">Help us make RoadRave amazing with your ideas!</p>
                 <div class="form-group">
@@ -1068,8 +663,7 @@
                     </div>
                     <div class="error-message"></div>
                 </div>
-                <button type="button" class="btn btn-back" onclick="prevSection()">Back</button>
-                <button type="submit" class="btn btn-next">Submit Survey 🎉</button>
+                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
             </div>
         </div>
         <!-- Thank You Section -->
@@ -1108,177 +702,24 @@
             </div>
         </div>
     </form>
-    <script>
-        let currentSection = 0;
-        const totalSections = 11;
-        const formData = {};
-        // Generate unique ID on load
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('uniqueId').value = 'RR-' + Date.now() + '-' + Math.random().toString(36).substr(2, 6);
-            document.querySelectorAll('.section').forEach(section => {
-                if (section.dataset.section !== '0') {
-                    section.classList.add('hidden');
-                }
-            });
-        });
-        function nextSection() {
-            const currentSectionElement = document.querySelector(`[data-section="${currentSection}"]`);
-            if (currentSection !== 0) {
-                const requiredInputs = currentSectionElement.querySelectorAll('[required]');
-                let isValid = true;
-                requiredInputs.forEach(input => {
-                    const group = input.closest('.form-group');
-                    const error = group.querySelector('.error-message');
-                    if (input.type === 'radio') {
-                        const radioGroup = currentSectionElement.querySelectorAll(`[name="${input.name}"]`);
-                        const isChecked = Array.from(radioGroup).some(radio => radio.checked);
-                        if (!isChecked) {
-                            isValid = false;
-                            group.classList.add('error');
-                            error.textContent = 'Please select an option';
-                            error.classList.add('show');
-                        } else {
-                            group.classList.remove('error');
-                            error.classList.remove('show');
-                        }
-                    }
-                });
-                if (!isValid) {
-                    return;
-                }
-            }
-            storeCurrentSectionData();
-            currentSectionElement.classList.add('hidden');
-            currentSection++;
-            if (currentSection <= totalSections) {
-                document.querySelectorAll('.section').forEach(section => {
-                    section.classList.add('hidden');
-                });
-                const nextSectionElement = document.querySelector(`[data-section="${currentSection}"]`);
-                if (nextSectionElement) {
-                    nextSectionElement.classList.remove('hidden');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-            }
-        }
-        window.nextSection = nextSection;
-        function prevSection() {
-            const currentSectionElement = document.querySelector(`[data-section="${currentSection}"]`);
-            storeCurrentSectionData();
-            currentSectionElement.classList.add('hidden');
-            currentSection--;
-            if (currentSection >= 0) {
-                document.querySelectorAll('.section').forEach(section => {
-                    section.classList.add('hidden');
-                });
-                const prevSectionElement = document.querySelector(`[data-section="${currentSection}"]`);
-                if (prevSectionElement) {
-                    prevSectionElement.classList.remove('hidden');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-            }
-        }
-        window.prevSection = prevSection;
-        function storeCurrentSectionData() {
-            const currentSectionElement = document.querySelector(`[data-section="${currentSection}"]`);
-            const inputs = currentSectionElement.querySelectorAll('input, textarea, select');
-            inputs.forEach(input => {
-                const groupName = input.name;
-                if (input.type === 'radio' && input.checked) {
-                    formData[groupName] = { type: 'radio', value: input.value };
-                } else if (input.type === 'checkbox') {
-                    if (!formData[groupName]) {
-                        formData[groupName] = { type: 'checkbox', values: [] };
-                    }
-                    if (input.checked) {
-                        formData[groupName].values.push(input.value);
-                    }
-                } else if (input.type === 'textarea' || input.tagName === 'SELECT') {
-                    formData[groupName] = { type: input.type, value: input.value };
-                }
-            });
-            try {
-                localStorage.setItem('roadRaveFormData', JSON.stringify(formData));
-            } catch (e) {
-                console.error('Failed to save form data:', e);
-            }
-        }
-        document.getElementById('researchForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            storeCurrentSectionData();
-            document.querySelector(`[data-section="${currentSection}"]`).classList.add('hidden');
-            currentSection = totalSections;
-            document.querySelector(`[data-section="${currentSection}"]`).classList.remove('hidden');
-            // Collect all form data as flat key-value pairs
-            const flatData = {};
-            Object.keys(formData).forEach(key => {
-                if (formData[key] && formData[key].type === 'checkbox') {
-                    flatData[key] = formData[key].values;
-                } else if (formData[key] && formData[key].type) {
-                    flatData[key] = formData[key].value;
-                } else {
-                    flatData[key] = formData[key];
-                }
-            });
-            // Add uniqueId and personal info
-            flatData.uniqueId = document.getElementById('uniqueId').value;
-            flatData.userName = document.getElementById('userName').value;
-            flatData.userAge = document.getElementById('userAge').value;
-            flatData.userGender = document.getElementById('userGender').value;
-            flatData.userEmail = document.getElementById('userEmail').value;
-            // CHANGE THIS ENDPOINT to your backend, SheetDB, Google Forms, etc.
-            const endpoint = 'https://sheetdb.io/api/v1/5p4g8qrf3tr1c';
-            try {
-                const response = await fetch(endpoint, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ data: flatData })
-                });
-                if (response.ok) {
-                    document.querySelector('.thank-you .section-content').innerHTML += '<div style="margin-top:20px;color:#fff;background:#43e97b;padding:16px;border-radius:10px;">Your responses have been saved! ✅<br><small>You can connect this form to Google Sheets, SheetDB, or your own backend by changing the endpoint in the code.</small></div>';
-                } else {
-                    document.querySelector('.thank-you .section-content').innerHTML += '<div style="margin-top:20px;color:#fff;background:#ff4444;padding:16px;border-radius:10px;">There was a problem saving your responses. Please try again.</div>';
-                }
-            } catch (err) {
-                document.querySelector('.thank-you .section-content').innerHTML += '<div style="margin-top:20px;color:#fff;background:#ff4444;padding:16px;border-radius:10px;">There was a problem saving your responses. Please try again.</div>';
-            }
-            localStorage.removeItem('roadRaveFormData');
-        });
-        document.getElementById('betaForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('betaEmail').value;
-            const consent = document.getElementById('betaConsent').checked;
-            const uniqueId = document.getElementById('uniqueId').value;
-            if (!email || !consent) return;
-            // Send to SheetDB as well
-            try {
-                await fetch('https://sheetdb.io/api/v1/5p4g8qrf3tr1c', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ data: { uniqueId, betaEmail: email, betaConsent: consent ? 'yes' : 'no' } })
-                });
-                document.getElementById('betaForm').style.display = 'none';
-                document.getElementById('betaSuccess').style.display = 'block';
-            } catch (err) {
-                document.getElementById('betaSuccess').style.display = 'block';
-                document.getElementById('betaSuccess').innerText = 'There was a problem saving your beta signup. Please try again.';
-            }
-        });
-        function toggleOther(group) {
-            // Show/hide the corresponding other-input field
-            document.querySelectorAll(`[name="${group}"]`).forEach(input => {
-                if (input.type === 'radio' && input.checked && input.value === 'other') {
-                    document.querySelector(`[name="${group}Other"]`).classList.remove('hidden');
-                } else if (input.type === 'radio' && input.value === 'other') {
-                    document.querySelector(`[name="${group}Other"]`).classList.add('hidden');
-                }
-                if (input.type === 'checkbox' && input.checked && input.value === 'other') {
-                    document.querySelector(`[name="${group}Other"]`).classList.remove('hidden');
-                } else if (input.type === 'checkbox' && input.value === 'other' && !input.checked) {
-                    document.querySelector(`[name="${group}Other"]`).classList.add('hidden');
-                }
-            });
-        }
-    </script>
+    <div id="gamifiedProgressBar" style="position:fixed;top:0;left:0;width:0;height:6px;background:linear-gradient(90deg,#43e97b,#667eea,#764ba2);z-index:2000;transition:width 0.4s cubic-bezier(.4,2,.6,1);box-shadow:0 2px 8px rgba(102,126,234,0.15);"></div>
+    <!-- Add Badge Popup -->
+    <div id="badgePopup" style="display:none;position:fixed;top:60px;right:30px;z-index:3000;background:#fff;border-radius:16px;padding:18px 28px;box-shadow:0 8px 32px rgba(67,233,123,0.25);font-size:1.2em;font-weight:bold;color:#43e97b;animation:badgePop 0.7s;">
+        <span id="badgePopupEmoji" style="font-size:2em;vertical-align:middle;"></span>
+        <span id="badgePopupText"></span>
+    </div>
+    <style>@keyframes badgePop{0%{transform:scale(0.7);opacity:0;}60%{transform:scale(1.15);opacity:1;}100%{transform:scale(1);}}</style>
+    <!-- Final Gamified Summary Section -->
+    <div class="section gamified-summary hidden" data-section="12">
+        <div class="section-content" style="text-align:center;">
+            <h2>🏅 Your RoadRave Event Profile!</h2>
+            <div id="earnedBadges" style="margin:20px 0 30px 0;"></div>
+            <div id="personalitySummary" style="font-size:1.3em;margin-bottom:20px;"></div>
+            <button class="btn" id="shareProfileBtn">Share My Profile 🚀</button>
+            <div style="margin-top:30px;color:#888;font-size:0.95em;">Thank you for playing! 🎉<br>Share your results and invite friends to join the RoadRave adventure!</div>
+        </div>
+    </div>
+    <button id="debugBadgeBtn" style="position:fixed;bottom:20px;right:20px;z-index:4000;">Show Test Badge</button>
+    <script src="gamified.js"></script>
 </body>
 </html>
