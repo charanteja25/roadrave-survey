@@ -56,7 +56,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Santiago:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
 body {
-    font-family: 'Anime Ace', 'Comic Neue', 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+    font-family: 'Inter', 'Segoe UI', 'Arial', 'Comic Neue', 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
     line-height: 1.4;
     overflow-x: hidden;
 }
@@ -428,7 +428,20 @@ textarea:focus {
 }
 @media (max-width: 700px) {
     .radio-option, .checkbox-option {
-        width: 100%;
+        font-size: 1em;
+        flex-direction: row;
+    }
+    .back-btn {
+        display: block;
+        margin: 16px auto 12px auto;
+        position: static;
+        width: fit-content;
+    }
+    .section-content > .back-btn {
+        order: 2;
+    }
+    .section-content h2 {
+        order: 1;
     }
 }
 .back-btn {

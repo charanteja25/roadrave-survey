@@ -72,7 +72,7 @@
                     <input type="text" id="occupationOther" name="occupationOther" class="other-input hidden" placeholder="Please specify your occupation" />
                     <div id="studentFollowup" class="form-group hidden">
                         <label>Do you attend university events or only public events?</label>
-                        <select name="studentEvents" class="other-input">
+                        <select name="studentEvents" class="other-input" required>
                             <option value="">Select...</option>
                             <option value="university">University events</option>
                             <option value="public">Public events</option>
@@ -81,11 +81,11 @@
                 </div>
                     <div id="youngProfessionalFollowup" class="form-group hidden">
                         <label>Do you usually go with coworkers or friends?</label>
-                        <input type="text" name="youngProfessionalGroup" class="other-input" placeholder="Coworkers, friends, both, etc." />
+                        <input type="text" name="youngProfessionalGroup" class="other-input" placeholder="Coworkers, friends, both, etc." required />
                     </div>
                     <div id="freelancerFollowup" class="form-group hidden">
                         <label>Do you prefer flexible, last-minute plans?</label>
-                        <select name="freelancerFlexible" class="other-input">
+                        <select name="freelancerFlexible" class="other-input" required>
                             <option value="">Select...</option>
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
@@ -93,7 +93,7 @@
                     </div>
                     <div id="academiaFollowup" class="form-group hidden">
                         <label>Do you attend academic conferences or research events?</label>
-                        <select name="academiaConferences" class="other-input">
+                        <select name="academiaConferences" class="other-input" required>
                             <option value="">Select...</option>
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
@@ -101,7 +101,7 @@
                     </div>
                     <div id="professionalFollowup" class="form-group hidden">
                         <label>Do you attend industry conferences or professional events?</label>
-                        <select name="professionalConferences" class="other-input">
+                        <select name="professionalConferences" class="other-input" required>
                             <option value="">Select...</option>
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
@@ -139,7 +139,7 @@
                 <div class="form-group">
                     <label>What types of events do you attend? (Select all that apply)</label>
                     <div class="checkbox-group">
-                        <label class="checkbox-option"><input type="checkbox" name="eventTypes" value="concerts"><span>Concerts</span></label>
+                        <label class="checkbox-option"><input type="checkbox" name="eventTypes" value="concerts" required><span>Concerts</span></label>
                         <label class="checkbox-option"><input type="checkbox" name="eventTypes" value="festivals"><span>Festivals</span></label>
                         <label class="checkbox-option"><input type="checkbox" name="eventTypes" value="conferences"><span>Conferences</span></label>
                         <label class="checkbox-option"><input type="checkbox" name="eventTypes" value="sports"><span>Sports</span></label>
