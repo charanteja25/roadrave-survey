@@ -121,7 +121,6 @@
         <!-- Event Habits Section (Combined) -->
         <div class="section events hidden" data-section="3">
             <div class="section-content">
-                <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
                 <h2>🎪 Event Habits</h2>
                 <div class="form-group">
                     <label>How often do you attend events like concerts, festivals, or sports matches?</label>
@@ -150,14 +149,16 @@
                     <input type="text" class="other-input hidden" name="eventTypesOther" placeholder="Please specify" />
                     <div class="error-message"></div>
                 </div>
-                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+                <div class="button-container">
+                    <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
+                    <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+                </div>
             </div>
         </div>
 
         <!-- RoadRave Interest Section (Combined) -->
         <div class="section roadrave-interest hidden" data-section="4">
             <div class="section-content">
-                <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
                 <h2>🚀 RoadRave & Social Connection</h2>
                 <div class="form-group">
                     <label>How likely are you to use RoadRave for planning your event attendance?</label>
@@ -177,14 +178,16 @@
                     </div>
                     <div class="error-message"></div>
                 </div>
-                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+                <div class="button-container">
+                    <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
+                    <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+                </div>
             </div>
         </div>
 
         <!-- Challenges Section -->
         <div class="section challenges hidden" data-section="5">
             <div class="section-content">
-                <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
                 <h2>😤 What Holds You Back?</h2>
                 <p class="subtitle">Help us understand the barriers you face</p>
                 <div class="form-group">
@@ -226,14 +229,16 @@
                     <input type="text" class="other-input hidden" name="barriersOther" placeholder="Please specify" />
                     <div class="error-message"></div>
                 </div>
-                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+                <div class="button-container">
+                    <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
+                    <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+                </div>
             </div>
         </div>
 
         <!-- Travel Section (Combined) -->
         <div class="section travel hidden" data-section="6">
             <div class="section-content">
-                <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
                 <h2>🚗 How Do You Get There?</h2>
                 <p class="subtitle">Tell us about your event travel habits</p>
                 <div class="form-group">
@@ -284,14 +289,16 @@
                     </div>
                     <div class="error-message"></div>
                 </div>
-                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+                <div class="button-container">
+                    <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
+                    <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+                </div>
             </div>
         </div>
 
         <!-- Carpool Section -->
         <div class="section carpool hidden" data-section="7">
             <div class="section-content">
-                <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
                 <h2>🚗 Would You Consider Carpooling?</h2>
                 <div class="form-group">
                     <label>Would you consider carpooling?</label>
@@ -311,14 +318,16 @@
                     </div>
                     <div class="error-message"></div>
                 </div>
-                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+                <div class="button-container">
+                    <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
+                    <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+                </div>
             </div>
         </div>
 
         <!-- Features Section -->
         <div class="section features hidden" data-section="8">
             <div class="section-content">
-                <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
                 <h2>✨ What Would You Love?</h2>
                 <p class="subtitle">Tell us which RoadRave features excite you most</p>
                 <div class="form-group">
@@ -359,14 +368,16 @@
                     </div>
                     <div class="error-message"></div>
                 </div>
-                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+                <div class="button-container">
+                    <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
+                    <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+                </div>
             </div>
         </div>
 
         <!-- Safety Section -->
         <div class="section safety hidden" data-section="9">
             <div class="section-content">
-                <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
                 <h2>🛡️ Safety Matters</h2>
                 <p class="subtitle">How important are safety features to you?</p>
                 <div class="form-group">
@@ -391,14 +402,16 @@
                     </div>
                     <div class="error-message"></div>
                 </div>
-                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+                <div class="button-container">
+                    <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
+                    <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+                </div>
             </div>
         </div>
 
         <!-- Pricing Section (Combined) -->
         <div class="section pricing hidden" data-section="10">
             <div class="section-content">
-                <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
                 <h2>💰 What's It Worth?</h2>
                 <p class="subtitle">Help us understand what you'd pay for premium features</p>
                 <div class="form-group">
@@ -437,14 +450,16 @@
                     </div>
                     <div class="error-message"></div>
                 </div>
-                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+                <div class="button-container">
+                    <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
+                    <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+                </div>
             </div>
         </div>
 
         <!-- Beta Interest Section -->
         <div class="section beta-interest hidden" data-section="11">
             <div class="section-content">
-                <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
                 <h2>🚀 Join Our Beta!</h2>
                 <div class="form-group">
                     <label>How likely are you to subscribe to a premium version?</label>
@@ -464,14 +479,16 @@
                     </div>
                     <div class="error-message"></div>
                 </div>
-                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+                <div class="button-container">
+                    <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
+                    <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+                </div>
             </div>
         </div>
 
         <!-- Feedback Section -->
         <div class="section feedback hidden" data-section="12">
             <div class="section-content">
-                <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
                 <h2>💭 Your Thoughts</h2>
                 <p class="subtitle">Help us make RoadRave amazing with your ideas!</p>
                 <div class="form-group">
@@ -510,7 +527,10 @@
                     </div>
                     <div class="error-message"></div>
                 </div>
-                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+                <div class="button-container">
+                    <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
+                    <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+                </div>
             </div>
         </div>
         <!-- Thank You Section -->
@@ -522,7 +542,10 @@
                 <p style="margin-top: 30px; color: #666; font-size: 0.9em;">
                     🎵 RoadRave - Making events social, safe, and affordable
                 </p>
-                <button type="button" class="btn btn-next" onclick="nextSection()">Continue</button>
+                <div class="button-container">
+                    <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
+                    <button type="button" class="btn btn-next" onclick="nextSection()">Continue</button>
+                </div>
             </div>
         </div>
         <!-- Beta Invitation Section -->
@@ -539,7 +562,10 @@
                     <div class="form-group">
                         <label><input type="checkbox" id="betaConsent" name="betaConsent" required /> I consent to be contacted about the RoadRave beta and offers.</label>
                     </div>
-                    <button type="submit" class="btn btn-next">Join Beta</button>
+                    <div class="button-container">
+                        <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
+                        <button type="submit" class="btn btn-next">Join Beta</button>
+                    </div>
                 </form>
                 <div id="betaSuccess" style="display:none;margin-top:20px;color:#fff;background:#43e97b;padding:16px;border-radius:10px;">Thank you! You're on the beta list. We'll be in touch soon!</div>
             </div>

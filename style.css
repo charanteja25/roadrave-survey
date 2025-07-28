@@ -431,18 +431,38 @@ textarea:focus {
         font-size: 1em;
         flex-direction: row;
     }
+    
+    /* Button container for mobile */
+    .button-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-top: 20px;
+        width: 100%;
+    }
+    
     .back-btn {
         display: block;
-        margin: 16px auto 12px auto;
+        margin: 0;
         position: static;
-        width: fit-content;
+        width: 50%;
+        order: 1;
     }
-    .section-content > .back-btn {
+    
+    .btn-next {
+        width: 50%;
         order: 2;
     }
+    
+    .section-content > .back-btn {
+        order: 1;
+    }
+    
     .section-content h2 {
         order: 1;
     }
+    
     .back-btn-text {
         display: none;
     }
