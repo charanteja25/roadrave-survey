@@ -432,35 +432,27 @@ textarea:focus {
         flex-direction: row;
     }
     
-    /* Button container for mobile */
-    .button-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 10px;
-        margin-top: 20px;
-        width: 100%;
-    }
-    
     .back-btn {
-        display: block;
+        position: absolute;
+        top: 20px;
+        left: 20px;
         margin: 0;
-        position: static;
-        width: 50%;
-        order: 1;
+        width: auto;
+        order: unset;
     }
     
     .btn-next {
-        width: 50%;
-        order: 2;
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        width: auto;
+        order: unset;
     }
     
-    .section-content > .back-btn {
-        order: 1;
-    }
-    
-    .section-content h2 {
-        order: 1;
+    .section-content {
+        position: relative;
+        padding-bottom: 80px; /* Make room for the next button */
+        padding-top: 60px; /* Make room for the back button */
     }
     
     .back-btn-text {
