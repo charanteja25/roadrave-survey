@@ -118,11 +118,11 @@
                 <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
             </div>
         </div>
-        <!-- Event Frequency Section -->
+        <!-- Event Habits Section (Combined) -->
         <div class="section events hidden" data-section="3">
             <div class="section-content">
                 <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
-                <h2>🎪 How Often Do You Attend Events?</h2>
+                <h2>🎪 Event Habits</h2>
                 <div class="form-group">
                     <label>How often do you attend events like concerts, festivals, or sports matches?</label>
                     <div class="radio-group">
@@ -136,17 +136,8 @@
                     <input type="text" class="other-input hidden" name="frequencyOther" placeholder="Please specify" />
                     <div class="error-message"></div>
                 </div>
-                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
-            </div>
-        </div>
-
-        <!-- Event Types Section -->
-        <div class="section event-types hidden" data-section="4">
-            <div class="section-content">
-                <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
-                <h2>🎭 What Types of Events Do You Attend?</h2>
                 <div class="form-group">
-                    <label>Select all that apply:</label>
+                    <label>What types of events do you attend? (Select all that apply)</label>
                     <div class="checkbox-group">
                         <label class="checkbox-option"><input type="checkbox" name="eventTypes" value="concerts" required><span>Concerts</span></label>
                         <label class="checkbox-option"><input type="checkbox" name="eventTypes" value="festivals"><span>Festivals</span></label>
@@ -163,11 +154,11 @@
             </div>
         </div>
 
-        <!-- RoadRave Interest Section -->
-        <div class="section roadrave-interest hidden" data-section="5">
+        <!-- RoadRave Interest Section (Combined) -->
+        <div class="section roadrave-interest hidden" data-section="4">
             <div class="section-content">
                 <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
-                <h2>🚀 Would You Use RoadRave?</h2>
+                <h2>🚀 RoadRave & Social Connection</h2>
                 <div class="form-group">
                     <label>How likely are you to use RoadRave for planning your event attendance?</label>
                     <div class="radio-group">
@@ -177,15 +168,6 @@
                     </div>
                     <div class="error-message"></div>
                 </div>
-                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
-            </div>
-        </div>
-
-        <!-- Social Connection Section -->
-        <div class="section social-connection hidden" data-section="6">
-            <div class="section-content">
-                <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
-                <h2>👥 Connecting with Others</h2>
                 <div class="form-group">
                     <label>How important is connecting with other event-goers before an event?</label>
                     <div class="radio-group">
@@ -200,7 +182,7 @@
         </div>
 
         <!-- Challenges Section -->
-        <div class="section challenges hidden" data-section="7">
+        <div class="section challenges hidden" data-section="5">
             <div class="section-content">
                 <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
                 <h2>😤 What Holds You Back?</h2>
@@ -248,8 +230,8 @@
             </div>
         </div>
 
-        <!-- Travel Section -->
-        <div class="section travel hidden" data-section="8">
+        <!-- Travel Section (Combined) -->
+        <div class="section travel hidden" data-section="6">
             <div class="section-content">
                 <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
                 <h2>🚗 How Do You Get There?</h2>
@@ -280,15 +262,6 @@
                     </div>
                     <div class="error-message"></div>
                 </div>
-                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
-            </div>
-        </div>
-
-        <!-- Travel Cost Section -->
-        <div class="section travel-cost hidden" data-section="9">
-            <div class="section-content">
-                <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
-                <h2>💷 How Much Do You Spend on Travel?</h2>
                 <div class="form-group">
                     <label>How much do you typically spend on travel to events?</label>
                     <div class="radio-group">
@@ -316,7 +289,7 @@
         </div>
 
         <!-- Carpool Section -->
-        <div class="section carpool hidden" data-section="10">
+        <div class="section carpool hidden" data-section="7">
             <div class="section-content">
                 <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
                 <h2>🚗 Would You Consider Carpooling?</h2>
@@ -343,7 +316,7 @@
         </div>
 
         <!-- Features Section -->
-        <div class="section features hidden" data-section="11">
+        <div class="section features hidden" data-section="8">
             <div class="section-content">
                 <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
                 <h2>✨ What Would You Love?</h2>
@@ -391,7 +364,7 @@
         </div>
 
         <!-- Safety Section -->
-        <div class="section safety hidden" data-section="12">
+        <div class="section safety hidden" data-section="9">
             <div class="section-content">
                 <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
                 <h2>🛡️ Safety Matters</h2>
@@ -422,8 +395,8 @@
             </div>
         </div>
 
-        <!-- Pricing Section -->
-        <div class="section pricing hidden" data-section="13">
+        <!-- Pricing Section (Combined) -->
+        <div class="section pricing hidden" data-section="10">
             <div class="section-content">
                 <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
                 <h2>💰 What's It Worth?</h2>
@@ -446,15 +419,6 @@
                     </div>
                     <div class="error-message"></div>
                 </div>
-                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
-            </div>
-        </div>
-
-        <!-- Premium Pricing Section -->
-        <div class="section premium-pricing hidden" data-section="14">
-            <div class="section-content">
-                <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
-                <h2>💎 Premium Features</h2>
                 <div class="form-group">
                     <label>How likely are you to subscribe to a premium version?</label>
                     <div class="radio-group">
@@ -478,7 +442,7 @@
         </div>
 
         <!-- Beta Interest Section -->
-        <div class="section beta-interest hidden" data-section="15">
+        <div class="section beta-interest hidden" data-section="11">
             <div class="section-content">
                 <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
                 <h2>🚀 Join Our Beta!</h2>
@@ -505,7 +469,7 @@
         </div>
 
         <!-- Feedback Section -->
-        <div class="section feedback hidden" data-section="16">
+        <div class="section feedback hidden" data-section="12">
             <div class="section-content">
                 <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
                 <h2>💭 Your Thoughts</h2>
@@ -550,7 +514,7 @@
             </div>
         </div>
         <!-- Thank You Section -->
-        <div class="section thank-you hidden" data-section="17">
+        <div class="section thank-you hidden" data-section="13">
             <div class="section-content">
                 <h2>🎉 Thank You!</h2>
                 <p>Your feedback is incredibly valuable and will help us build an amazing experience for event-goers like you!</p>
@@ -562,7 +526,7 @@
             </div>
         </div>
         <!-- Beta Invitation Section -->
-        <div class="section beta-invite hidden" data-section="18">
+        <div class="section beta-invite hidden" data-section="14">
             <div class="section-content">
                 <h2>🚀 Responses Saved!</h2>
                 <p>Would you like to join our exclusive beta program?</p>
@@ -589,7 +553,7 @@
     </div>
     <style>@keyframes badgePop{0%{transform:scale(0.7);opacity:0;}60%{transform:scale(1.15);opacity:1;}100%{transform:scale(1);}}</style>
     <!-- Final Gamified Summary Section -->
-    <div class="section gamified-summary hidden" data-section="19">
+    <div class="section gamified-summary hidden" data-section="15">
         <div class="section-content" style="text-align:center;">
             <h2>🏅 Your RoadRave Event Profile!</h2>
             <div id="earnedBadges" style="margin:20px 0 30px 0;"></div>
