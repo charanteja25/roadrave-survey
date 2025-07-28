@@ -118,11 +118,11 @@
                 <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
             </div>
         </div>
-        <!-- Event Habits Section -->
+        <!-- Event Frequency Section -->
         <div class="section events hidden" data-section="3">
             <div class="section-content">
                 <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
-                <h2>🎪 Event Habits</h2>
+                <h2>🎪 How Often Do You Attend Events?</h2>
                 <div class="form-group">
                     <label>How often do you attend events like concerts, festivals, or sports matches?</label>
                     <div class="radio-group">
@@ -136,8 +136,17 @@
                     <input type="text" class="other-input hidden" name="frequencyOther" placeholder="Please specify" />
                     <div class="error-message"></div>
                 </div>
+                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+            </div>
+        </div>
+
+        <!-- Event Types Section -->
+        <div class="section event-types hidden" data-section="4">
+            <div class="section-content">
+                <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
+                <h2>🎭 What Types of Events Do You Attend?</h2>
                 <div class="form-group">
-                    <label>What types of events do you attend? (Select all that apply)</label>
+                    <label>Select all that apply:</label>
                     <div class="checkbox-group">
                         <label class="checkbox-option"><input type="checkbox" name="eventTypes" value="concerts" required><span>Concerts</span></label>
                         <label class="checkbox-option"><input type="checkbox" name="eventTypes" value="festivals"><span>Festivals</span></label>
@@ -150,23 +159,15 @@
                     <input type="text" class="other-input hidden" name="eventTypesOther" placeholder="Please specify" />
                     <div class="error-message"></div>
                 </div>
-                <div class="form-group">
-                    <label>What’s the last event you attended? (Optional)</label>
-                    <textarea name="lastEvent" placeholder="Describe the last event you attended..."></textarea>
-                    <div class="error-message"></div>
-                </div>
-                <div class="form-group">
-                    <label>How do you usually find out about events? (Select all that apply)</label>
-                    <div class="checkbox-group">
-                        <label class="checkbox-option"><input type="checkbox" name="findEvents" value="social-media" onchange="toggleOther('findEvents')"><span>Social media</span></label>
-                        <label class="checkbox-option"><input type="checkbox" name="findEvents" value="friends" onchange="toggleOther('findEvents')"><span>Friends</span></label>
-                        <label class="checkbox-option"><input type="checkbox" name="findEvents" value="event-websites" onchange="toggleOther('findEvents')"><span>Event websites</span></label>
-                        <label class="checkbox-option"><input type="checkbox" name="findEvents" value="ads" onchange="toggleOther('findEvents')"><span>Ads</span></label>
-                        <label class="checkbox-option"><input type="checkbox" name="findEvents" value="other" onchange="toggleOther('findEvents')"><span>Other</span></label>
-                    </div>
-                    <input type="text" class="other-input hidden" name="findEventsOther" placeholder="Please specify" />
-                    <div class="error-message"></div>
-                </div>
+                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+            </div>
+        </div>
+
+        <!-- RoadRave Interest Section -->
+        <div class="section roadrave-interest hidden" data-section="5">
+            <div class="section-content">
+                <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
+                <h2>🚀 Would You Use RoadRave?</h2>
                 <div class="form-group">
                     <label>How likely are you to use RoadRave for planning your event attendance?</label>
                     <div class="radio-group">
@@ -176,6 +177,15 @@
                     </div>
                     <div class="error-message"></div>
                 </div>
+                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+            </div>
+        </div>
+
+        <!-- Social Connection Section -->
+        <div class="section social-connection hidden" data-section="6">
+            <div class="section-content">
+                <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
+                <h2>👥 Connecting with Others</h2>
                 <div class="form-group">
                     <label>How important is connecting with other event-goers before an event?</label>
                     <div class="radio-group">
@@ -190,7 +200,7 @@
         </div>
 
         <!-- Challenges Section -->
-        <div class="section challenges hidden" data-section="4">
+        <div class="section challenges hidden" data-section="7">
             <div class="section-content">
                 <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
                 <h2>😤 What Holds You Back?</h2>
@@ -234,51 +244,12 @@
                     <input type="text" class="other-input hidden" name="barriersOther" placeholder="Please specify" />
                     <div class="error-message"></div>
                 </div>
-                <div class="form-group">
-                    <label>Biggest challenge when planning? (Select all that apply)</label>
-                    <div class="checkbox-group">
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="planningChallenges" value="cost">
-                            <span>💰 Cost of tickets/travel/accommodation</span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="planningChallenges" value="company">
-                            <span>😕 Finding people to go with</span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="planningChallenges" value="booking">
-                            <span>🚗 Booking travel/accommodation</span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="planningChallenges" value="safety">
-                            <span>🛡️ Safety concerns</span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="planningChallenges" value="accommodation">
-                            <span>🏨 Finding accommodation</span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="planningChallenges" value="time">
-                            <span>⏱️ Time-consuming planning</span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="planningChallenges" value="none">
-                            <span>✨ No major challenges</span>
-                        </label>
-                    </div>
-                    <div class="error-message"></div>
-                </div>
-                <div class="form-group">
-                    <label>Describe a time you missed an event (open text)</label>
-                    <textarea name="missedEvent" placeholder="Tell us about a time you couldn't attend an event and why..."></textarea>
-                    <div class="error-message"></div>
-                </div>
                 <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
             </div>
         </div>
 
         <!-- Travel Section -->
-        <div class="section travel hidden" data-section="5">
+        <div class="section travel hidden" data-section="8">
             <div class="section-content">
                 <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
                 <h2>🚗 How Do You Get There?</h2>
@@ -309,6 +280,15 @@
                     </div>
                     <div class="error-message"></div>
                 </div>
+                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+            </div>
+        </div>
+
+        <!-- Travel Cost Section -->
+        <div class="section travel-cost hidden" data-section="9">
+            <div class="section-content">
+                <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
+                <h2>💷 How Much Do You Spend on Travel?</h2>
                 <div class="form-group">
                     <label>How much do you typically spend on travel to events?</label>
                     <div class="radio-group">
@@ -331,32 +311,15 @@
                     </div>
                     <div class="error-message"></div>
                 </div>
-                <div class="form-group">
-                    <label>Concerns about event travel:</label>
-                    <div class="checkbox-group">
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="travelConcerns" value="cost">
-                            <span>💰 Cost of tickets/travel/accommodation</span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="travelConcerns" value="safety">
-                            <span>🛡️ Safety concerns</span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="travelConcerns" value="convenience">
-                            <span>🚗 Convenience (finding parking, public transport)</span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="travelConcerns" value="environmental">
-                            <span>🌿 Environmental impact</span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="travelConcerns" value="none">
-                            <span>✨ No major concerns</span>
-                        </label>
-                    </div>
-                    <div class="error-message"></div>
-                </div>
+                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+            </div>
+        </div>
+
+        <!-- Carpool Section -->
+        <div class="section carpool hidden" data-section="10">
+            <div class="section-content">
+                <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
+                <h2>🚗 Would You Consider Carpooling?</h2>
                 <div class="form-group">
                     <label>Would you consider carpooling?</label>
                     <div class="radio-group">
@@ -375,109 +338,50 @@
                     </div>
                     <div class="error-message"></div>
                 </div>
-                <div class="form-group">
-                    <label>Would you use an app to book shared travel/accommodation?</label>
-                    <div class="radio-group">
-                        <label class="radio-option">
-                            <input type="radio" name="bookingAppInterest" value="yes" required>
-                            <span>💳 Yes, I would definitely use an app for booking</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="bookingAppInterest" value="no" required>
-                            <span>🚫 No, I prefer to do it manually</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="bookingAppInterest" value="maybe" required>
-                            <span>🤔 Maybe - I'll see how it works</span>
-                        </label>
-                    </div>
-                    <div class="error-message"></div>
-                </div>
                 <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
             </div>
         </div>
 
         <!-- Features Section -->
-        <div class="section features hidden" data-section="6">
+        <div class="section features hidden" data-section="11">
             <div class="section-content">
                 <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
                 <h2>✨ What Would You Love?</h2>
                 <p class="subtitle">Tell us which RoadRave features excite you most</p>
                 <div class="form-group">
-                    <label>Which features would be most valuable to you? (Select all that apply)</label>
+                    <label>Which features would you find most useful? (Select all that apply)</label>
                     <div class="checkbox-group">
                         <label class="checkbox-option">
-                            <input type="checkbox" name="features" value="verified-chats">
-                            <span>💬 Verified group chats with other attendees</span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="features" value="carpool">
-                            <span>🚗 Carpool coordination & cost-splitting</span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="features" value="accommodation">
-                            <span>🏨 Group accommodation booking</span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="features" value="travel-info">
-                            <span>🗺️ Travel info (parking, routes, LEZ zones)</span>
-                        </label>
-                        <label class="checkbox-option">
                             <input type="checkbox" name="features" value="event-discovery">
-                            <span>🔍 Event discovery & recommendations</span>
+                            <span>🔍 Event discovery and recommendations</span>
                         </label>
                         <label class="checkbox-option">
                             <input type="checkbox" name="features" value="meetup">
-                            <span>🤝 Pre-event meetups & social connections</span>
+                            <span>👥 Meet other event-goers before events</span>
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="features" value="rewards">
-                            <span>🎁 Loyalty rewards & discounts</span>
-                        </label>
-                    </div>
-                    <div class="error-message"></div>
-                </div>
-                <div class="form-group">
-                    <label>What perks would encourage you to subscribe? (Select all that apply)</label>
-                    <div class="checkbox-group">
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="perks" value="exclusive-invites">
-                            <span>🎟️ Exclusive event invites</span>
+                            <input type="checkbox" name="features" value="carpool">
+                            <span>🚗 Find carpool partners</span>
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="perks" value="bonus-rewards">
-                            <span>🎁 Bonus rewards & discounts</span>
+                            <input type="checkbox" name="features" value="safety">
+                            <span>🛡️ Safety features (location sharing, emergency contacts)</span>
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="perks" value="priority-matching">
-                            <span>🏃 Priority matching for events</span>
+                            <input type="checkbox" name="features" value="booking">
+                            <span>💳 Integrated booking for travel/accommodation</span>
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="perks" value="discounts">
-                            <span>💳 Discounts on tickets/travel</span>
+                            <input type="checkbox" name="features" value="planning">
+                            <span>📅 Group planning tools</span>
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="perks" value="other" onchange="toggleOther('perks')">
-                            <span>🌟 Other</span>
+                            <input type="checkbox" name="features" value="reviews">
+                            <span>⭐ Reviews and ratings for events</span>
                         </label>
-                    </div>
-                    <input type="text" class="other-input hidden" name="perksOther" placeholder="Please specify" />
-                    <div class="error-message"></div>
-                </div>
-                <div class="form-group">
-                    <label>How important are app features for you? (Select one)</label>
-                    <div class="radio-group">
-                        <label class="radio-option">
-                            <input type="radio" name="featureImportance" value="not-important" required>
-                            <span>😅 Not really important - I'm pretty carefree</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="featureImportance" value="somewhat-important" required>
-                            <span>🤔 Somewhat important - basic features are good</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="featureImportance" value="very-important" required>
-                            <span>🛡️ Very important - I won't use apps without strong features</span>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="features" value="discounts">
+                            <span>💰 Group discounts and deals</span>
                         </label>
                     </div>
                     <div class="error-message"></div>
@@ -487,66 +391,31 @@
         </div>
 
         <!-- Safety Section -->
-        <div class="section safety hidden" data-section="7">
+        <div class="section safety hidden" data-section="12">
             <div class="section-content">
                 <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
                 <h2>🛡️ Safety Matters</h2>
                 <p class="subtitle">How important are safety features to you?</p>
                 <div class="form-group">
-                    <label>How important are safety features when meeting new people for events?</label>
+                    <label>How important are safety features when attending events?</label>
                     <div class="radio-group">
                         <label class="radio-option">
                             <input type="radio" name="safetyImportance" value="not-important" required>
-                            <span>😅 Not really important - I'm pretty carefree</span>
+                            <span>🚫 Not important</span>
                         </label>
                         <label class="radio-option">
                             <input type="radio" name="safetyImportance" value="somewhat-important" required>
-                            <span>🤔 Somewhat important - basic safety is good</span>
+                            <span>🤔 Somewhat important</span>
                         </label>
                         <label class="radio-option">
                             <input type="radio" name="safetyImportance" value="very-important" required>
-                            <span>🛡️ Very important - safety is a top priority</span>
+                            <span>🛡️ Very important</span>
                         </label>
                         <label class="radio-option">
                             <input type="radio" name="safetyImportance" value="essential" required>
-                            <span>🔒 Essential - I won't use apps without strong safety features</span>
+                            <span>🚨 Essential - I won't attend without them</span>
                         </label>
                     </div>
-                    <div class="error-message"></div>
-                </div>
-                <div class="form-group">
-                    <label>Which safety features would make you feel most comfortable? (Select all that apply)</label>
-                    <div class="checkbox-group">
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="safetyFeatures" value="user-verification">
-                            <span>✅ User verification & ID checks</span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="safetyFeatures" value="ratings">
-                            <span>⭐ User ratings & reviews</span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="safetyFeatures" value="panic-button">
-                            <span>🚨 Panic button & emergency contacts</span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="safetyFeatures" value="gps-tracking">
-                            <span>📍 Real-time GPS tracking during carpools</span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="safetyFeatures" value="moderation">
-                            <span>👮 AI chat moderation & reporting</span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="safetyFeatures" value="support">
-                            <span>📞 24/7 customer support</span>
-                        </label>
-                    </div>
-                    <div class="error-message"></div>
-                </div>
-                <div class="form-group">
-                    <label>Any safety concerns about carpooling/sharing? (open text)</label>
-                    <textarea name="safetyConcerns" placeholder="Share any worries, concerns, or ideas about safety features..."></textarea>
                     <div class="error-message"></div>
                 </div>
                 <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
@@ -554,51 +423,65 @@
         </div>
 
         <!-- Pricing Section -->
-        <div class="section pricing hidden" data-section="8">
+        <div class="section pricing hidden" data-section="13">
             <div class="section-content">
                 <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
                 <h2>💰 What's It Worth?</h2>
                 <p class="subtitle">Help us understand what you'd pay for premium features</p>
                 <div class="form-group">
-                    <label>Would you use a free app with basic features? (Select one)</label>
+                    <label>Would you use a free version of RoadRave?</label>
                     <div class="radio-group">
                         <label class="radio-option">
                             <input type="radio" name="freeAppWillingness" value="yes" required>
-                            <span>🆓 Yes, I would definitely use a free app</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="freeAppWillingness" value="no" required>
-                            <span>🚫 No, I prefer to pay for a premium app</span>
+                            <span>✅ Yes, I would definitely use a free version</span>
                         </label>
                         <label class="radio-option">
                             <input type="radio" name="freeAppWillingness" value="maybe" required>
-                            <span>🤔 Maybe - I'll see how it works</span>
+                            <span>🤔 Maybe - I'll try it first</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="freeAppWillingness" value="no" required>
+                            <span>❌ No, I prefer paid apps</span>
                         </label>
                     </div>
                     <div class="error-message"></div>
                 </div>
+                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+            </div>
+        </div>
+
+        <!-- Premium Pricing Section -->
+        <div class="section premium-pricing hidden" data-section="14">
+            <div class="section-content">
+                <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
+                <h2>💎 Premium Features</h2>
                 <div class="form-group">
-                    <label>Would you pay £4.99/month for premium features? (Priority matching, exclusive events, enhanced safety)</label>
+                    <label>How likely are you to subscribe to a premium version?</label>
                     <div class="radio-group">
                         <label class="radio-option">
-                            <input type="radio" name="premiumWillingness" value="yes" required>
-                            <span>💳 Yes, that sounds reasonable</span>
+                            <input type="radio" name="premiumWillingness" value="not-likely" required>
+                            <span>🚫 Not likely - I prefer free apps</span>
                         </label>
                         <label class="radio-option">
-                            <input type="radio" name="premiumWillingness" value="maybe" required>
-                            <span>🤔 Maybe - depends on the features</span>
+                            <input type="radio" name="premiumWillingness" value="somewhat-likely" required>
+                            <span>🤔 Somewhat likely - I might subscribe</span>
                         </label>
                         <label class="radio-option">
-                            <input type="radio" name="premiumWillingness" value="too-expensive" required>
-                            <span>😬 Too expensive - I'd want it cheaper</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="premiumWillingness" value="never" required>
-                            <span>🚫 No - I prefer free apps only</span>
+                            <input type="radio" name="premiumWillingness" value="very-likely" required>
+                            <span>🚀 Very likely - I'd definitely subscribe</span>
                         </label>
                     </div>
                     <div class="error-message"></div>
                 </div>
+                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
+            </div>
+        </div>
+
+        <!-- Beta Interest Section -->
+        <div class="section beta-interest hidden" data-section="15">
+            <div class="section-content">
+                <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
+                <h2>🚀 Join Our Beta!</h2>
                 <div class="form-group">
                     <label>How likely are you to subscribe to a premium version?</label>
                     <div class="radio-group">
@@ -622,7 +505,7 @@
         </div>
 
         <!-- Feedback Section -->
-        <div class="section feedback hidden" data-section="9">
+        <div class="section feedback hidden" data-section="16">
             <div class="section-content">
                 <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
                 <h2>💭 Your Thoughts</h2>
@@ -667,7 +550,7 @@
             </div>
         </div>
         <!-- Thank You Section -->
-        <div class="section thank-you hidden" data-section="10">
+        <div class="section thank-you hidden" data-section="17">
             <div class="section-content">
                 <h2>🎉 Thank You!</h2>
                 <p>Your feedback is incredibly valuable and will help us build an amazing experience for event-goers like you!</p>
@@ -679,7 +562,7 @@
             </div>
         </div>
         <!-- Beta Invitation Section -->
-        <div class="section beta-invite hidden" data-section="11">
+        <div class="section beta-invite hidden" data-section="18">
             <div class="section-content">
                 <h2>🚀 Responses Saved!</h2>
                 <p>Would you like to join our exclusive beta program?</p>
@@ -694,7 +577,7 @@
                     </div>
                     <button type="submit" class="btn btn-next">Join Beta</button>
                 </form>
-                <div id="betaSuccess" style="display:none;margin-top:20px;color:#fff;background:#43e97b;padding:16px;border-radius:10px;">Thank you! You’re on the beta list. We’ll be in touch soon!</div>
+                <div id="betaSuccess" style="display:none;margin-top:20px;color:#fff;background:#43e97b;padding:16px;border-radius:10px;">Thank you! You're on the beta list. We'll be in touch soon!</div>
             </div>
         </div>
     </form>
@@ -706,7 +589,7 @@
     </div>
     <style>@keyframes badgePop{0%{transform:scale(0.7);opacity:0;}60%{transform:scale(1.15);opacity:1;}100%{transform:scale(1);}}</style>
     <!-- Final Gamified Summary Section -->
-    <div class="section gamified-summary hidden" data-section="12">
+    <div class="section gamified-summary hidden" data-section="19">
         <div class="section-content" style="text-align:center;">
             <h2>🏅 Your RoadRave Event Profile!</h2>
             <div id="earnedBadges" style="margin:20px 0 30px 0;"></div>

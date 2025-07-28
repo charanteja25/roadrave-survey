@@ -1,7 +1,7 @@
 /* eslint-env browser */
 // Extracted from index.html <script>
 let currentSection = 1;
-const totalSections = 11;
+const totalSections = 18;
 const formData = {};
 
 // --- Function Definitions (move above usage) ---
@@ -84,7 +84,7 @@ function showGamifiedSummary(flatData) {
 }
 
 // --- Gamification Data ---
-const gamifiedTotalSections = 11;
+const gamifiedTotalSections = 18;
 const badgeRules = [
     { id: 'festivalFanatic', emoji: '🎪', name: 'Festival Fanatic', desc: 'Attends events very often', check: data => data.frequency === 'very-often' },
     { id: 'safetyStar', emoji: '🛡️', name: 'Safety Star', desc: 'Values safety features highly', check: data => data.safetyImportance === 'very-important' || data.safetyImportance === 'essential' },
@@ -120,11 +120,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (currentSection === 3) {
             const freq = document.querySelector('input[name="frequency"]:checked');
             if (freq && freq.value === 'never') {
-                currentSection = 4; // Go to Challenges/Barriers
+                currentSection = 7; // Go to Challenges/Barriers
             } else {
                 currentSection++;
             }
-        } else if (currentSection === 4) {
+        } else if (currentSection === 7) {
             // If they selected 'never' in section 3, jump to Feedback after Challenges
             let freq = null;
             if (formData.frequency && formData.frequency.value) {
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (freqInput) freq = freqInput.value;
             }
             if (freq === 'never') {
-                currentSection = 9; // Feedback
+                currentSection = 16; // Feedback
             } else {
                 currentSection++;
             }
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateProgressBar();
         const flatData = getFlatFormData();
         checkAndAwardBadges(flatData);
-        if (currentSection === 12) {
+        if (currentSection === 19) {
             showGamifiedSummary(flatData);
         }
     };
@@ -335,9 +335,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 researchForm.querySelectorAll('button[type="submit"], .btn-next').forEach(btn => btn.disabled = false);
             }
             localStorage.removeItem('roadRaveFormData');
-            currentSection = 12;
+            currentSection = 19;
             document.querySelectorAll('.section').forEach(section => section.classList.add('hidden'));
-            document.querySelector('[data-section="12"]').classList.remove('hidden');
+            document.querySelector('[data-section="19"]').classList.remove('hidden');
             updateProgressBar();
             showGamifiedSummary(getFlatFormData());
             window.scrollTo({ top: 0, behavior: 'smooth' });
