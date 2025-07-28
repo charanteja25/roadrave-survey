@@ -1,4 +1,6 @@
 /* Extracted from index.html <style> */
+@import url('https://fonts.googleapis.com/css2?family=Santiago:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -53,10 +55,8 @@
     background: linear-gradient(90deg, #ff6b6b, #ff8e53);
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Santiago:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
 body {
-    font-family: 'Inter', 'Segoe UI', 'Arial', 'Comic Neue', 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+    font-family: 'Santiago', 'Segoe UI', 'Arial', 'Helvetica', sans-serif;
     line-height: 1.4;
     overflow-x: hidden;
 }
