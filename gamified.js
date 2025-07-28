@@ -197,17 +197,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Add autofill button for testing
-    const introSection = document.querySelector('.section.intro .section-content');
-    if (introSection) {
-        const autofillBtn = document.createElement('button');
-        autofillBtn.type = 'button';
-        autofillBtn.className = 'btn';
-        autofillBtn.style.margin = '10px 0 0 0';
-        autofillBtn.textContent = 'Autofill All Fields (Test)';
-        autofillBtn.onclick = autofillAllFields;
-        introSection.appendChild(autofillBtn);
-    }
     // Patch form submit to only validate visible section
     const researchForm = document.getElementById('researchForm');
     if (researchForm) {
@@ -467,45 +456,4 @@ document.addEventListener('DOMContentLoaded', function() {
             otherInput.classList.add('hidden');
         }
     };
-});
-// Autofill utility for all fields (for testing only)
-function autofillAllFields() {
-    // Demographics
-    document.getElementById('userGender').value = 'female';
-    window.toggleGenderOther();
-    document.getElementById('userAge').value = '28';
-    document.getElementById('region').value = 'London';
-    window.toggleRegionOther();
-    document.getElementById('occupation').value = 'student';
-    window.toggleOccupationFollowups();
-    document.getElementById('userName') && (document.getElementById('userName').value = 'Test User');
-    document.getElementById('userEmail') && (document.getElementById('userEmail').value = 'test@example.com');
-    document.getElementById('genderOther') && (document.getElementById('genderOther').value = '');
-    document.getElementById('regionOther') && (document.getElementById('regionOther').value = '');
-    document.getElementById('occupationOther') && (document.getElementById('occupationOther').value = '');
-    // Student followup
-    document.getElementsByName('studentEvents')[0].value = 'both';
-    // Event Habits
-    document.querySelector('input[name="frequency"][value="often"]').checked = true;
-    // Travel
-    document.querySelector('input[name="travelMethod"][value="carpool"]').checked = true;
-    document.querySelector('input[name="travelCost"][value="10-20"]').checked = true;
-    document.querySelector('input[name="carpoolInterest"][value="yes"]').checked = true;
-    document.querySelector('input[name="bookingAppInterest"][value="yes"]').checked = true;
-    // Features
-    document.querySelector('input[name="featureImportance"][value="very-important"]').checked = true;
-    document.querySelector('input[name="safetyImportance"][value="essential"]').checked = true;
-    document.querySelector('input[name="freeAppWillingness"][value="yes"]').checked = true;
-    document.querySelector('input[name="premiumWillingness"][value="yes"]').checked = true;
-    document.querySelector('input[name="betaInterest"][value="very-likely"]').checked = true;
-    // Features multi-select
-    document.querySelectorAll('input[name="features"]').forEach(el => el.checked = true);
-    // Planning challenges multi-select
-    document.querySelectorAll('input[name="planningChallenges"]').forEach(el => el.checked = true);
-    // Importance connect
-    document.querySelector('input[name="importanceConnect"][value="very-important"]').checked = true;
-    // Feedback
-    document.getElementsByName('mustHaveFeatures')[0].value = 'More social features, better safety.';
-    document.getElementsByName('concerns')[0].value = 'No concerns.';
-    document.querySelector('input[name="hearAbout"][value="social-media"]').checked = true;
-} 
+}); 
