@@ -443,6 +443,9 @@ textarea:focus {
     .section-content h2 {
         order: 1;
     }
+    .back-btn-text {
+        display: none;
+    }
 }
 .back-btn {
     position: absolute;
