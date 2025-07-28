@@ -40,7 +40,7 @@
                     </div>
                 <div class="form-group">
                     <label for="userAge">Age</label>
-                    <input type="number" id="userAge" name="userAge" required class="other-input" placeholder="Your age" />
+                    <input type="number" id="userAge" name="userAge" required class="other-input" placeholder="Your age" min="1" max="100" oninvalid="this.setCustomValidity('Please enter an age between 1 and 100.')" oninput="this.setCustomValidity('')" />
                     <div class="error-message"></div>
                 </div>
                 <div class="form-group">
@@ -111,7 +111,7 @@
                 </div>
                 <div class="form-group">
                     <label for="userEmail">Email (optional, for updates)</label>
-                    <input type="email" id="userEmail" name="userEmail" class="other-input" placeholder="you@email.com" />
+                    <input type="email" id="userEmail" name="userEmail" class="other-input" placeholder="you@email.com" oninvalid="this.setCustomValidity('Please enter a valid email address.')" oninput="this.setCustomValidity('')" />
                     <div class="error-message"></div>
                 </div>
                 <input type="hidden" id="uniqueId" name="uniqueId" />
@@ -672,10 +672,6 @@
                 <h2>🎉 Thank You!</h2>
                 <p>Your feedback is incredibly valuable and will help us build an amazing experience for event-goers like you!</p>
                 <p><strong>Want to stay updated?</strong><br>Follow us on social media or check back at our website for beta launch updates!</p>
-                <div style="margin-top: 30px;">
-                    <a href="#" class="btn" style="margin-right: 10px;">Follow Updates 📧</a>
-                    <a href="#" class="btn">Share Survey 📤</a>
-                </div>
                 <p style="margin-top: 30px; color: #666; font-size: 0.9em;">
                     🎵 RoadRave - Making events social, safe, and affordable
                 </p>
@@ -715,11 +711,9 @@
             <h2>🏅 Your RoadRave Event Profile!</h2>
             <div id="earnedBadges" style="margin:20px 0 30px 0;"></div>
             <div id="personalitySummary" style="font-size:1.3em;margin-bottom:20px;"></div>
-            <button class="btn" id="shareProfileBtn">Share My Profile 🚀</button>
             <div style="margin-top:30px;color:#888;font-size:0.95em;">Thank you for playing! 🎉<br>Share your results and invite friends to join the RoadRave adventure!</div>
         </div>
     </div>
-    <button id="debugBadgeBtn" style="position:fixed;bottom:20px;right:20px;z-index:4000;">Show Test Badge</button>
     <script src="gamified.js"></script>
 </body>
 </html>

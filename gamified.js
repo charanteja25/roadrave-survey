@@ -82,9 +82,6 @@ function showGamifiedSummary(flatData) {
     const summaryDiv = document.getElementById('personalitySummary');
     if (summaryDiv) summaryDiv.innerHTML = `<span style="font-size:2em;">${personality.emoji}</span><br><span style="font-weight:bold;font-size:1.2em;">${personality.name}</span><br>${personality.desc}`;
 }
-function showTestBadge() {
-    showBadgePopup({ emoji: '🦄', name: 'Test Badge', desc: 'This is a test badge popup!' });
-}
 
 // --- Gamification Data ---
 const gamifiedTotalSections = 11;
@@ -99,15 +96,8 @@ const badgeRules = [
 ];
 let earnedBadges = [];
 
-// TEST MODE: Set to true to disable all required fields for fast testing
-const TEST_MODE = true; // Set to false or remove for production
-
 // --- DOMContentLoaded: All DOM access and event listeners go here ---
 document.addEventListener('DOMContentLoaded', function() {
-    // TEST MODE: Remove all required attributes for fast testing
-    if (TEST_MODE) {
-        document.querySelectorAll('[required]').forEach(el => el.removeAttribute('required'));
-    }
     // Set unique ID
     const uniqueIdInput = document.getElementById('uniqueId');
     if (uniqueIdInput) {
@@ -207,10 +197,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
+    // Add autofill button for testing
+    const introSection = document.querySelector('.section.intro .section-content');
+    if (introSection) {
+        const autofillBtn = document.createElement('button');
+        autofillBtn.type = 'button';
+        autofillBtn.className = 'btn';
+        autofillBtn.style.margin = '10px 0 0 0';
+        autofillBtn.textContent = 'Autofill All Fields (Test)';
+        autofillBtn.onclick = autofillAllFields;
+        introSection.appendChild(autofillBtn);
+    }
     // Patch form submit to only validate visible section
     const researchForm = document.getElementById('researchForm');
     if (researchForm) {
+        let submitting = false;
         researchForm.addEventListener('submit', async (e) => {
+            if (submitting) {
+                e.preventDefault();
+                return;
+            }
             // Remove required from hidden fields
             const hiddenInputs = Array.from(document.querySelectorAll('.section.hidden input, .section.hidden select, .section.hidden textarea'));
             const removedRequired = [];
@@ -236,6 +242,54 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
             }
+            // Custom validation for email and age
+            const emailInput = document.getElementById('userEmail');
+            const ageInput = document.getElementById('userAge');
+            let customError = false;
+            // Email validation (if not empty)
+            if (emailInput && emailInput.value) {
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(emailInput.value)) {
+                    valid = false;
+                    customError = true;
+                    emailInput.classList.add('input-error');
+                    const errMsg = emailInput.parentElement.querySelector('.error-message');
+                    if (errMsg) errMsg.textContent = 'Please enter a valid email address.';
+                    emailInput.focus();
+                } else {
+                    emailInput.classList.remove('input-error');
+                    const errMsg = emailInput.parentElement.querySelector('.error-message');
+                    if (errMsg) errMsg.textContent = '';
+                }
+            }
+            // Age validation
+            if (ageInput && ageInput.value) {
+                const age = parseInt(ageInput.value, 10);
+                if (isNaN(age) || age < 1 || age > 100) {
+                    valid = false;
+                    customError = true;
+                    ageInput.classList.add('input-error');
+                    const errMsg = ageInput.parentElement.querySelector('.error-message');
+                    if (errMsg) errMsg.textContent = 'Please enter a valid age (1-100).';
+                    ageInput.focus();
+                } else {
+                    ageInput.classList.remove('input-error');
+                    const errMsg = ageInput.parentElement.querySelector('.error-message');
+                    if (errMsg) errMsg.textContent = '';
+                }
+            }
+            // If custom error, prevent submission and show section
+            if (customError) {
+                e.preventDefault();
+                // Show the section with the error
+                document.querySelectorAll('.section').forEach(section => section.classList.add('hidden'));
+                const errorSection = emailInput && emailInput.classList.contains('input-error') ? emailInput.closest('.section') : ageInput.closest('.section');
+                if (errorSection) errorSection.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                // Restore required attributes
+                removedRequired.forEach(input => input.setAttribute('required', 'required'));
+                return;
+            }
             if (!valid) {
                 e.preventDefault();
                 // Optionally, show a message
@@ -257,6 +311,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             // Now proceed with submission
             e.preventDefault();
+            submitting = true;
+            // Disable all submit buttons
+            researchForm.querySelectorAll('button[type="submit"], .btn-next').forEach(btn => btn.disabled = true);
             window.storeCurrentSectionData();
             document.querySelector(`[data-section="${currentSection}"]`).classList.add('hidden');
             currentSection = totalSections;
@@ -267,6 +324,8 @@ document.addEventListener('DOMContentLoaded', function() {
             flatData.userAge = document.getElementById('userAge') ? document.getElementById('userAge').value : '';
             flatData.userGender = document.getElementById('userGender') ? document.getElementById('userGender').value : '';
             flatData.userEmail = document.getElementById('userEmail') ? document.getElementById('userEmail').value : '';
+            // Debug: log all data being sent
+            console.log('Submitting data:', flatData);
             const endpoint = 'https://sheetdb.io/api/v1/5p4g8qrf3tr1c';
             try {
                 const response = await fetch(endpoint, {
@@ -278,9 +337,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.querySelector('.thank-you .section-content').innerHTML += '<div style="margin-top:20px;color:#fff;background:#43e97b;padding:16px;border-radius:10px;">Your responses have been saved! ✅<br><small>You can connect this form to Google Sheets, SheetDB, or your own backend by changing the endpoint in the code.</small></div>';
                 } else {
                     document.querySelector('.thank-you .section-content').innerHTML += '<div style="margin-top:20px;color:#fff;background:#ff4444;padding:16px;border-radius:10px;">There was a problem saving your responses. Please try again.</div>';
+                    submitting = false;
+                    researchForm.querySelectorAll('button[type="submit"], .btn-next').forEach(btn => btn.disabled = false);
                 }
             } catch {
                 document.querySelector('.thank-you .section-content').innerHTML += '<div style="margin-top:20px;color:#fff;background:#ff4444;padding:16px;border-radius:10px;">There was a problem saving your responses. Please try again.</div>';
+                submitting = false;
+                researchForm.querySelectorAll('button[type="submit"], .btn-next').forEach(btn => btn.disabled = false);
             }
             localStorage.removeItem('roadRaveFormData');
             currentSection = 12;
@@ -315,11 +378,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('betaSuccess').innerText = 'There was a problem saving your beta signup. Please try again.';
             }
         });
-    }
-    // Debug badge button
-    const debugBtn = document.getElementById('debugBadgeBtn');
-    if (debugBtn) {
-        debugBtn.addEventListener('click', showTestBadge);
     }
     // Share profile button
     const shareBtn = document.getElementById('shareProfileBtn');
@@ -409,4 +467,45 @@ document.addEventListener('DOMContentLoaded', function() {
             otherInput.classList.add('hidden');
         }
     };
-}); 
+});
+// Autofill utility for all fields (for testing only)
+function autofillAllFields() {
+    // Demographics
+    document.getElementById('userGender').value = 'female';
+    window.toggleGenderOther();
+    document.getElementById('userAge').value = '28';
+    document.getElementById('region').value = 'London';
+    window.toggleRegionOther();
+    document.getElementById('occupation').value = 'student';
+    window.toggleOccupationFollowups();
+    document.getElementById('userName') && (document.getElementById('userName').value = 'Test User');
+    document.getElementById('userEmail') && (document.getElementById('userEmail').value = 'test@example.com');
+    document.getElementById('genderOther') && (document.getElementById('genderOther').value = '');
+    document.getElementById('regionOther') && (document.getElementById('regionOther').value = '');
+    document.getElementById('occupationOther') && (document.getElementById('occupationOther').value = '');
+    // Student followup
+    document.getElementsByName('studentEvents')[0].value = 'both';
+    // Event Habits
+    document.querySelector('input[name="frequency"][value="often"]').checked = true;
+    // Travel
+    document.querySelector('input[name="travelMethod"][value="carpool"]').checked = true;
+    document.querySelector('input[name="travelCost"][value="10-20"]').checked = true;
+    document.querySelector('input[name="carpoolInterest"][value="yes"]').checked = true;
+    document.querySelector('input[name="bookingAppInterest"][value="yes"]').checked = true;
+    // Features
+    document.querySelector('input[name="featureImportance"][value="very-important"]').checked = true;
+    document.querySelector('input[name="safetyImportance"][value="essential"]').checked = true;
+    document.querySelector('input[name="freeAppWillingness"][value="yes"]').checked = true;
+    document.querySelector('input[name="premiumWillingness"][value="yes"]').checked = true;
+    document.querySelector('input[name="betaInterest"][value="very-likely"]').checked = true;
+    // Features multi-select
+    document.querySelectorAll('input[name="features"]').forEach(el => el.checked = true);
+    // Planning challenges multi-select
+    document.querySelectorAll('input[name="planningChallenges"]').forEach(el => el.checked = true);
+    // Importance connect
+    document.querySelector('input[name="importanceConnect"][value="very-important"]').checked = true;
+    // Feedback
+    document.getElementsByName('mustHaveFeatures')[0].value = 'More social features, better safety.';
+    document.getElementsByName('concerns')[0].value = 'No concerns.';
+    document.querySelector('input[name="hearAbout"][value="social-media"]').checked = true;
+} 
