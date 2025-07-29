@@ -311,7 +311,7 @@
         </div>
 
         <!-- Features Section -->
-        <div class="section features hidden" data-section="8">
+        <div class="section features hidden" data-section="7">
             <div class="section-content">
                 <h2>✨ What Would You Love?</h2>
                 <p class="subtitle">Tell us which RoadRave features excite you most</p>
@@ -356,7 +356,7 @@
         </div>
 
         <!-- Pricing Section (Combined) -->
-        <div class="section pricing hidden" data-section="10">
+        <div class="section pricing hidden" data-section="8">
             <div class="section-content">
                 <h2>💰 What's It Worth?</h2>
                 <p class="subtitle">Help us understand what you'd pay for premium features</p>
@@ -400,38 +400,30 @@
                 <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
             </div>
         </div>
-
-        <!-- Beta Interest Section -->
-        <div class="section beta-interest hidden" data-section="11">
+        <!-- Beta Invitation Section -->
+        <div class="section beta-interest hidden" data-section="9">
             <div class="section-content">
-                <h2>🚀 Join Our Beta!</h2>
-                <div class="form-group">
-                    <label>How likely are you to subscribe to a premium version?</label>
-                    <div class="radio-group">
-                        <label class="radio-option">
-                            <input type="radio" name="betaInterest" value="not-likely" required>
-                            <span>🚫 Not likely - I prefer free apps</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="betaInterest" value="somewhat-likely" required>
-                            <span>🤔 Somewhat likely - I might subscribe</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="betaInterest" value="very-likely" required>
-                            <span>🚀 Very likely - I'd definitely subscribe</span>
-                        </label>
+                <h2>🚀 Responses Saved!</h2>
+                <p>Would you like to join our exclusive beta program?</p>
+                <p><strong>Beta testers get free access to the beta version and a special offer: 6 months of premium for just £1/month!</strong></p>
+                <form id="betaForm">
+                    <div class="form-group">
+                        <label for="betaEmail">Your Email (for beta access):</label>
+                        <input type="email" id="betaEmail" name="betaEmail" required class="other-input" placeholder="you@email.com" />
                     </div>
-                    <div class="error-message"></div>
-                </div>
-                <div class="button-container">
-                    <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
-                    <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
-                </div>
+                    <div class="form-group">
+                        <label><input type="checkbox" id="betaConsent" name="betaConsent" required /> I consent to be contacted about the RoadRave beta and offers.</label>
+                    </div>
+                    <div class="button-container">
+                        <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
+                        <button type="submit" class="btn btn-next">Join Beta</button>
+                    </div>
+                </form>
+                <div id="betaSuccess" style="display:none;margin-top:20px;color:#fff;background:#43e97b;padding:16px;border-radius:10px;">Thank you! You're on the beta list. We'll be in touch soon!</div>
             </div>
         </div>
-
         <!-- Feedback Section -->
-        <div class="section feedback hidden" data-section="12">
+        <div class="section feedback hidden" data-section="10">
             <div class="section-content">
                 <h2>💭 Your Thoughts</h2>
                 <p class="subtitle">Help us make RoadRave amazing with your ideas!</p>
@@ -478,7 +470,7 @@
             </div>
         </div>
         <!-- Thank You Section -->
-        <div class="section thank-you hidden" data-section="13">
+        <div class="section thank-you hidden" data-section="11">
             <div class="section-content">
                 <h2>🎉 Thank You!</h2>
                 <p>Your feedback is incredibly valuable and will help us build an amazing experience for event-goers like you!</p>
@@ -493,7 +485,7 @@
             </div>
         </div>
         <!-- Beta Invitation Section -->
-        <div class="section beta-invite hidden" data-section="14">
+        <div class="section beta-invite hidden" data-section="12">
             <div class="section-content">
                 <h2>🚀 Responses Saved!</h2>
                 <p>Would you like to join our exclusive beta program?</p>
@@ -523,7 +515,7 @@
     </div>
     <style>@keyframes badgePop{0%{transform:scale(0.7);opacity:0;}60%{transform:scale(1.15);opacity:1;}100%{transform:scale(1);}}</style>
     <!-- Final Gamified Summary Section -->
-    <div class="section gamified-summary hidden" data-section="15">
+    <div class="section gamified-summary hidden" data-section="13">
         <div class="section-content" style="text-align:center;">
             <h2>🏅 Your RoadRave Event Profile!</h2>
             <div id="earnedBadges" style="margin:20px 0 30px 0;"></div>
