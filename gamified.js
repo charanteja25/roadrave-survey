@@ -164,25 +164,35 @@ document.addEventListener('DOMContentLoaded', function() {
             const style = window.getComputedStyle(input);
             const isHidden = input.offsetParent === null || style.display === 'none' || style.visibility === 'hidden' || input.classList.contains('hidden') || input.closest('.hidden');
             if (isHidden) return;
+            const formGroup = input.closest('.form-group');
+            const errorMsg = formGroup ? formGroup.querySelector('.error-message') : null;
             // For radio/checkbox groups, only check one per name
             if ((input.type === 'radio' || input.type === 'checkbox')) {
                 if (section.querySelectorAll(`[name='${input.name}']:checked`).length === 0) {
                     valid = false;
-                    input.closest('.form-group').querySelector('.error-message').textContent = 'This question is required.';
-                    input.closest('.form-group').querySelector('.error-message').style.display = 'block';
+                    if (errorMsg) {
+                        errorMsg.textContent = 'This question is required.';
+                        errorMsg.style.display = 'block';
+                    }
                 } else {
-                    input.closest('.form-group').querySelector('.error-message').textContent = '';
-                    input.closest('.form-group').querySelector('.error-message').style.display = 'none';
+                    if (errorMsg) {
+                        errorMsg.textContent = '';
+                        errorMsg.style.display = 'none';
+                    }
                 }
             } else if (!input.value) {
                 valid = false;
                 input.classList.add('error');
-                input.closest('.form-group').querySelector('.error-message').textContent = 'This question is required.';
-                input.closest('.form-group').querySelector('.error-message').style.display = 'block';
+                if (errorMsg) {
+                    errorMsg.textContent = 'This question is required.';
+                    errorMsg.style.display = 'block';
+                }
             } else {
                 input.classList.remove('error');
-                input.closest('.form-group').querySelector('.error-message').textContent = '';
-                input.closest('.form-group').querySelector('.error-message').style.display = 'none';
+                if (errorMsg) {
+                    errorMsg.textContent = '';
+                    errorMsg.style.display = 'none';
+                }
             }
         });
         return valid;
