@@ -526,4 +526,17 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('input[required], select[required], textarea[required]').forEach(input => {
         input.dataset.originalRequired = 'true';
     });
+});
+
+// Prevent form submission except on the last section
+window.addEventListener('DOMContentLoaded', function() {
+    const researchForm = document.getElementById('researchForm');
+    if (researchForm) {
+        researchForm.addEventListener('submit', function(e) {
+            if (typeof currentSection !== 'undefined' && currentSection !== totalSections) {
+                e.preventDefault();
+                return false;
+            }
+        });
+    }
 }); 
