@@ -137,6 +137,20 @@ function nextSection() {
     }
 }
 
+function setRequiredAttributesForVisibleFields(section) {
+    // Remove required from all hidden fields
+    const allInputs = section.querySelectorAll('input, select, textarea');
+    allInputs.forEach(input => {
+        const style = window.getComputedStyle(input);
+        const isHidden = input.offsetParent === null || style.display === 'none' || style.visibility === 'hidden' || input.classList.contains('hidden') || input.closest('.hidden');
+        if (isHidden) {
+            input.removeAttribute('required');
+        } else if (input.dataset.originalRequired === 'true') {
+            input.setAttribute('required', 'required');
+        }
+    });
+}
+
 // --- DOMContentLoaded: All DOM access and event listeners go here ---
 document.addEventListener('DOMContentLoaded', function() {
     // Set unique ID
@@ -202,6 +216,9 @@ document.addEventListener('DOMContentLoaded', function() {
     window.nextSection = function() {
         if (!validateCurrentSection()) return;
         originalNextSection();
+        // After section changes, update required attributes
+        const newSection = document.querySelector(`.section[data-section="${currentSection}"]`);
+        if (newSection) setRequiredAttributesForVisibleFields(newSection);
     }
     window.prevSection = function() {
         const currentSectionElement = document.querySelector(`[data-section="${currentSection}"]`);
@@ -505,4 +522,8 @@ document.addEventListener('DOMContentLoaded', function() {
             otherInput.classList.add('hidden');
         }
     };
+    // On DOMContentLoaded, mark all originally required fields
+    document.querySelectorAll('input[required], select[required], textarea[required]').forEach(input => {
+        input.dataset.originalRequired = 'true';
+    });
 }); 
