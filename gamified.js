@@ -1,7 +1,7 @@
 /* eslint-env browser */
 // Extracted from index.html <script>
 let currentSection = 1;
-const totalSections = 15;
+const totalSections = 13;
 const formData = {};
 
 // --- Function Definitions (move above usage) ---
@@ -83,7 +83,7 @@ function showGamifiedSummary(flatData) {
 }
 
 // --- Gamification Data ---
-const gamifiedTotalSections = 15;
+const gamifiedTotalSections = 13;
 const badgeRules = [
     { id: 'festivalFanatic', emoji: '🎪', name: 'Festival Fanatic', desc: 'Attends events very often', check: data => data.frequency === 'very-often' },
     { id: 'ecoTraveler', emoji: '🌱', name: 'Eco Traveler', desc: 'Chooses carpool or public transport', check: data => data.travelMethod === 'carpool' || data.travelMethod === 'public-transport' },
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateProgressBar();
         const flatData = getFlatFormData();
         checkAndAwardBadges(flatData);
-        if (currentSection === 15) {
+        if (currentSection === 13) {
             showGamifiedSummary(flatData);
         }
     };
@@ -333,9 +333,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 researchForm.querySelectorAll('button[type="submit"], .btn-next').forEach(btn => btn.disabled = false);
             }
             localStorage.removeItem('roadRaveFormData');
-            currentSection = 15;
+            currentSection = 13;
             document.querySelectorAll('.section').forEach(section => section.classList.add('hidden'));
-            document.querySelector('[data-section="15"]').classList.remove('hidden');
+            document.querySelector('[data-section="13"]').classList.remove('hidden');
             updateProgressBar();
             showGamifiedSummary(getFlatFormData());
             window.scrollTo({ top: 0, behavior: 'smooth' });
