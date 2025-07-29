@@ -533,7 +533,9 @@ window.addEventListener('DOMContentLoaded', function() {
     const researchForm = document.getElementById('researchForm');
     if (researchForm) {
         researchForm.addEventListener('submit', function(e) {
-            if (typeof currentSection !== 'undefined' && currentSection !== totalSections) {
+            // Only allow submit if Beta Invite section is visible
+            const betaInviteSection = document.querySelector('.section.beta-invite');
+            if (!betaInviteSection || betaInviteSection.classList.contains('hidden')) {
                 e.preventDefault();
                 return false;
             }
