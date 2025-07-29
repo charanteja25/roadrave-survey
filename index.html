@@ -192,35 +192,35 @@
                     <label>What prevents you from attending events as often as you'd like? (Select all that apply)</label>
                     <div class="checkbox-group">
                         <label class="checkbox-option">
-                            <input type="checkbox" name="barriers" value="cost" onchange="toggleOther('barriers')">
+                            <input type="checkbox" name="barriers" value="cost" required onchange="toggleOther('barriers')">
                             <span>💰 Too expensive (tickets, travel, accommodation)</span>
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="barriers" value="company" onchange="toggleOther('barriers')">
+                            <input type="checkbox" name="barriers" value="company" required onchange="toggleOther('barriers')">
                             <span>😕 No one to go with</span>
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="barriers" value="logistics" onchange="toggleOther('barriers')">
+                            <input type="checkbox" name="barriers" value="logistics" required onchange="toggleOther('barriers')">
                             <span>🚗 Travel/logistics are complicated</span>
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="barriers" value="safety" onchange="toggleOther('barriers')">
+                            <input type="checkbox" name="barriers" value="safety" required onchange="toggleOther('barriers')">
                             <span>🛡️ Safety concerns</span>
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="barriers" value="planning" onchange="toggleOther('barriers')">
+                            <input type="checkbox" name="barriers" value="planning" required onchange="toggleOther('barriers')">
                             <span>📅 Planning is overwhelming</span>
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="barriers" value="social" onchange="toggleOther('barriers')">
+                            <input type="checkbox" name="barriers" value="social" required onchange="toggleOther('barriers')">
                             <span>😰 Social anxiety/shyness</span>
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="barriers" value="none" onchange="toggleOther('barriers')">
+                            <input type="checkbox" name="barriers" value="none" required onchange="toggleOther('barriers')">
                             <span>✨ Nothing really holds me back!</span>
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="barriers" value="other" onchange="toggleOther('barriers')">
+                            <input type="checkbox" name="barriers" value="other" required onchange="toggleOther('barriers')">
                             <span>🌟 Other</span>
                         </label>
                     </div>
@@ -285,15 +285,7 @@
                     </div>
                     <div class="error-message"></div>
                 </div>
-                <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
-                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
-            </div>
-        </div>
-
-        <!-- Carpool Section -->
-        <div class="section carpool hidden" data-section="7">
-            <div class="section-content">
-                <h2>🚗 Would You Consider Carpooling?</h2>
+                <!-- Carpool question moved here -->
                 <div class="form-group">
                     <label>Would you consider carpooling?</label>
                     <div class="radio-group">
@@ -312,10 +304,8 @@
                     </div>
                     <div class="error-message"></div>
                 </div>
-                <div class="button-container">
-                    <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
-                    <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
-                </div>
+                <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
+                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
             </div>
         </div>
 
@@ -328,65 +318,33 @@
                     <label>Which features would you find most useful? (Select all that apply)</label>
                     <div class="checkbox-group">
                         <label class="checkbox-option">
-                            <input type="checkbox" name="features" value="event-discovery">
+                            <input type="checkbox" name="features" value="event-discovery" required>
                             <span>🔍 Event discovery and recommendations</span>
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="features" value="meetup">
+                            <input type="checkbox" name="features" value="meetup" required>
                             <span>👥 Meet other event-goers before events</span>
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="features" value="carpool">
+                            <input type="checkbox" name="features" value="carpool" required>
                             <span>🚗 Find carpool partners</span>
                         </label>
 
                         <label class="checkbox-option">
-                            <input type="checkbox" name="features" value="booking">
+                            <input type="checkbox" name="features" value="booking" required>
                             <span>💳 Integrated booking for travel/accommodation</span>
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="features" value="planning">
+                            <input type="checkbox" name="features" value="planning" required>
                             <span>📅 Group planning tools</span>
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="features" value="reviews">
+                            <input type="checkbox" name="features" value="reviews" required>
                             <span>⭐ Reviews and ratings for events</span>
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="features" value="discounts">
+                            <input type="checkbox" name="features" value="discounts" required>
                             <span>💰 Group discounts and deals</span>
-                        </label>
-                    </div>
-                    <div class="error-message"></div>
-                </div>
-                <button type="button" class="back-btn" onclick="prevSection()">← <span class="back-btn-text">Back</span></button>
-                <button type="button" class="btn btn-next" onclick="nextSection()">Next →</button>
-            </div>
-        </div>
-
-        <!-- Safety Section -->
-        <div class="section safety hidden" data-section="9">
-            <div class="section-content">
-                <h2>🛡️ Safety Matters</h2>
-                <p class="subtitle">How important are safety features to you?</p>
-                <div class="form-group">
-                    <label>How important are safety features when attending events?</label>
-                    <div class="radio-group">
-                        <label class="radio-option">
-                            <input type="radio" name="safetyImportance" value="not-important" required>
-                            <span>🚫 Not important</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="safetyImportance" value="somewhat-important" required>
-                            <span>🤔 Somewhat important</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="safetyImportance" value="very-important" required>
-                            <span>🛡️ Very important</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="safetyImportance" value="essential" required>
-                            <span>🚨 Essential - I won't attend without them</span>
                         </label>
                     </div>
                     <div class="error-message"></div>
