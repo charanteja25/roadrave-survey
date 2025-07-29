@@ -94,6 +94,49 @@ const badgeRules = [
 ];
 let earnedBadges = [];
 
+function nextSection() {
+    const currentSectionElement = document.querySelector(`[data-section="${currentSection}"]`);
+    window.storeCurrentSectionData();
+    currentSectionElement.classList.add('hidden');
+    // Improved logic jump for 'Never' frequency
+    if (currentSection === 3) {
+        const freq = document.querySelector('input[name="frequency"]:checked');
+        if (freq && freq.value === 'never') {
+            currentSection = 5; // Go to Challenges/Barriers
+        } else {
+            currentSection++;
+        }
+    } else if (currentSection === 5) {
+        // If they selected 'never' in section 3, jump to Feedback after Challenges
+        let freq = null;
+        if (formData.frequency && formData.frequency.value) {
+            freq = formData.frequency.value;
+        } else {
+            const freqInput = document.querySelector('input[name="frequency"]:checked');
+            if (freqInput) freq = freqInput.value;
+        }
+        if (freq === 'never') {
+            currentSection = 9; // Feedback
+        } else {
+            currentSection++;
+        }
+    } else {
+        currentSection++;
+    }
+    if (currentSection <= totalSections) {
+        document.querySelectorAll('.section').forEach(section => section.classList.add('hidden'));
+        const nextSectionElement = document.querySelector(`[data-section="${currentSection}"]`);
+        if (nextSectionElement) nextSectionElement.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    updateProgressBar();
+    const flatData = getFlatFormData();
+    checkAndAwardBadges(flatData);
+    if (currentSection === 12) {
+        showGamifiedSummary(flatData);
+    }
+}
+
 // --- DOMContentLoaded: All DOM access and event listeners go here ---
 document.addEventListener('DOMContentLoaded', function() {
     // Set unique ID
@@ -110,48 +153,42 @@ document.addEventListener('DOMContentLoaded', function() {
     updateProgressBar();
 
     // Next/Prev Section functions
+    function validateCurrentSection() {
+        const section = document.querySelector(`.section[data-section="${currentSection}"]`);
+        if (!section) return true;
+        let valid = true;
+        // Validate required inputs
+        const requiredInputs = section.querySelectorAll('input[required], select[required], textarea[required]');
+        requiredInputs.forEach(input => {
+            // For radio/checkbox groups, only check one per name
+            if ((input.type === 'radio' || input.type === 'checkbox')) {
+                if (section.querySelectorAll(`[name='${input.name}']:checked`).length === 0) {
+                    valid = false;
+                    input.closest('.form-group').querySelector('.error-message').textContent = 'This question is required.';
+                    input.closest('.form-group').querySelector('.error-message').style.display = 'block';
+                } else {
+                    input.closest('.form-group').querySelector('.error-message').textContent = '';
+                    input.closest('.form-group').querySelector('.error-message').style.display = 'none';
+                }
+            } else if (!input.value) {
+                valid = false;
+                input.classList.add('error');
+                input.closest('.form-group').querySelector('.error-message').textContent = 'This question is required.';
+                input.closest('.form-group').querySelector('.error-message').style.display = 'block';
+            } else {
+                input.classList.remove('error');
+                input.closest('.form-group').querySelector('.error-message').textContent = '';
+                input.closest('.form-group').querySelector('.error-message').style.display = 'none';
+            }
+        });
+        return valid;
+    }
+    // Patch nextSection to validate before proceeding
+    const originalNextSection = nextSection;
     window.nextSection = function() {
-        const currentSectionElement = document.querySelector(`[data-section="${currentSection}"]`);
-        window.storeCurrentSectionData();
-        currentSectionElement.classList.add('hidden');
-        // Improved logic jump for 'Never' frequency
-        if (currentSection === 3) {
-            const freq = document.querySelector('input[name="frequency"]:checked');
-            if (freq && freq.value === 'never') {
-                currentSection = 5; // Go to Challenges/Barriers
-            } else {
-                currentSection++;
-            }
-        } else if (currentSection === 5) {
-            // If they selected 'never' in section 3, jump to Feedback after Challenges
-            let freq = null;
-            if (formData.frequency && formData.frequency.value) {
-                freq = formData.frequency.value;
-            } else {
-                const freqInput = document.querySelector('input[name="frequency"]:checked');
-                if (freqInput) freq = freqInput.value;
-            }
-            if (freq === 'never') {
-                currentSection = 12; // Feedback
-            } else {
-                currentSection++;
-            }
-        } else {
-            currentSection++;
-        }
-        if (currentSection <= totalSections) {
-            document.querySelectorAll('.section').forEach(section => section.classList.add('hidden'));
-            const nextSectionElement = document.querySelector(`[data-section="${currentSection}"]`);
-            if (nextSectionElement) nextSectionElement.classList.remove('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        updateProgressBar();
-        const flatData = getFlatFormData();
-        checkAndAwardBadges(flatData);
-        if (currentSection === 12) {
-            showGamifiedSummary(flatData);
-        }
-    };
+        if (!validateCurrentSection()) return;
+        originalNextSection();
+    }
     window.prevSection = function() {
         const currentSectionElement = document.querySelector(`[data-section="${currentSection}"]`);
         window.storeCurrentSectionData();
