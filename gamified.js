@@ -157,9 +157,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const section = document.querySelector(`.section[data-section="${currentSection}"]`);
         if (!section) return true;
         let valid = true;
-        // Validate required inputs
+        // Only validate visible required inputs
         const requiredInputs = section.querySelectorAll('input[required], select[required], textarea[required]');
         requiredInputs.forEach(input => {
+            // Skip hidden fields
+            const style = window.getComputedStyle(input);
+            const isHidden = input.offsetParent === null || style.display === 'none' || style.visibility === 'hidden' || input.classList.contains('hidden') || input.closest('.hidden');
+            if (isHidden) return;
             // For radio/checkbox groups, only check one per name
             if ((input.type === 'radio' || input.type === 'checkbox')) {
                 if (section.querySelectorAll(`[name='${input.name}']:checked`).length === 0) {
