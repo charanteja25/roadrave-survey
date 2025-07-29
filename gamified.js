@@ -35,13 +35,12 @@ function getPersonality(flatData) {
     if (flatData.carpoolInterest === 'no') scores.solo++;
     if (flatData.travelMethod === 'own-car') scores.solo++;
     if (flatData.planningChallenges && flatData.planningChallenges.includes('booking')) scores.planner++;
-    if (flatData.safetyImportance === 'very-important' || flatData.safetyImportance === 'essential') scores.planner++;
     if (flatData.frequency === 'often' || flatData.frequency === 'very-often') scores.adventurer++;
     if (flatData.features && flatData.features.includes('event-discovery')) scores.adventurer++;
     let maxType = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
     const personalities = {
         social: { emoji: '🦋', name: 'The Social Butterfly', desc: 'You love meeting new people and making connections at every event! Group chats, meetups, and social features are your jam.' },
-        planner: { emoji: '🗓️', name: 'The Planner', desc: 'You’re all about logistics, safety, and making sure everything goes smoothly. You value organization and peace of mind.' },
+        planner: { emoji: '🗓️', name: 'The Planner', desc: 'You’re all about logistics and making sure everything goes smoothly. You value organization and peace of mind.' },
         adventurer: { emoji: '🎸', name: 'The Adventurer', desc: 'You’re always up for a new experience and love attending events. You’re spontaneous, energetic, and ready for anything!' },
         solo: { emoji: '🦄', name: 'The Soloist', desc: 'You value your independence and enjoy events on your own terms. You’re confident, unique, and do things your way.' },
     };
@@ -58,7 +57,7 @@ function getFlatFormData() {
             flatData[key] = formData[key];
         }
     });
-    ['frequency','safetyImportance','travelMethod','carpoolInterest','importanceConnect','features','planningChallenges'].forEach(name => {
+    ['frequency','travelMethod','carpoolInterest','importanceConnect','features','planningChallenges'].forEach(name => {
         const el = document.querySelector(`[name="${name}"]`);
         if (el && el.type === 'radio') {
             const checked = document.querySelector(`[name="${name}"]:checked`);
@@ -87,7 +86,6 @@ function showGamifiedSummary(flatData) {
 const gamifiedTotalSections = 15;
 const badgeRules = [
     { id: 'festivalFanatic', emoji: '🎪', name: 'Festival Fanatic', desc: 'Attends events very often', check: data => data.frequency === 'very-often' },
-    { id: 'safetyStar', emoji: '🛡️', name: 'Safety Star', desc: 'Values safety features highly', check: data => data.safetyImportance === 'very-important' || data.safetyImportance === 'essential' },
     { id: 'ecoTraveler', emoji: '🌱', name: 'Eco Traveler', desc: 'Chooses carpool or public transport', check: data => data.travelMethod === 'carpool' || data.travelMethod === 'public-transport' },
     { id: 'socialButterfly', emoji: '🦋', name: 'Social Butterfly', desc: 'Loves connecting with others', check: data => data.importanceConnect === 'very-important' },
     { id: 'soloist', emoji: '🦄', name: 'The Soloist', desc: 'Prefers to travel alone', check: data => data.carpoolInterest === 'no' },
